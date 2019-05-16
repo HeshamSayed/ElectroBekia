@@ -1,0 +1,380 @@
+
+/*start Design the search*/
+
+
+/*end Design the search*/
+
+
+
+/*start Design the cursol*/
+/* body{
+    height: 2000px;
+} */
+
+.carousel-caption{
+    bottom: 80px;
+    background-color: rgba(3,3,3, 0.3);
+    padding-right:20px;
+    padding-left: 20px;
+}
+
+.carousel-indicators li {
+    height: 15px;
+    width:15px;
+}
+
+.carousel-indicators .active 
+{
+    height: 17px;
+    width: 17px;
+    background: #71ff7a;
+}
+
+/*end Design the cursol*/
+
+
+/*overriding the bootstrap classes*/
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #3c763d;
+}
+@media (min-width: 768px){
+.navbar-nav > li {
+    float: right;
+    text-align: center;
+}}
+
+.navbar-nav > li {
+    
+    text-align: center;
+}
+
+.navbar-inverse {
+    background-color: #fff;
+    border-color: #71ff7a;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ff0000;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #3c763d;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-brand{
+    
+    position: absolute;
+    color: #ff0000;
+    /* background-color:goldenrod; */
+    display: flex;
+        justify-content: center;
+}
+.navbar-inverse .navbar-brand:hover{
+    position: absolute;
+    color: #ff0000;
+}
+
+ .navbar > .container-fluid .navbar-brand { margin-left:38px }
+
+ .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {background-color: #3c763d}
+
+ .navbar-toggle {background-color: #3c763d}
+
+/* .nav li{
+    float: left;
+
+    
+}
+
+.navbar-nav li{
+    
+    float:left;
+    text-align: center;
+}
+
+.navbar-header{
+    position: relative;
+}
+
+.navbar-nav {
+    margin: -2.2px 2px;
+}
+
+.navbar-nav li a{
+    text-align: center;
+} */
+
+/* .navbar-brand{
+    display: flex;
+    align-items: center;
+} */
+
+/* .navbar-toggle{
+    float: right;
+} 
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {color:#ffffff; background-color: #6dff54a1;}
+
+
+
+
+
+/*media query*/
+
+@media (min-width:970px)
+{
+    .navbar-brand{   display: flex;
+        justify-content: center;
+        position: absolute;
+        width: 10%;
+        /* height: 50px; */
+        left: 40% ;
+        top: -31%;
+      }
+}
+
+@media (width:360px)
+{
+    .navbar-brand{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 0%;
+        top:-31%;
+    
+ }
+
+}
+
+
+
+
+
+@media (min-width:768px) and (max-width:969px)
+{
+    .navbar-brand{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 0%;
+        top:-31%;
+        left:45%;
+    }
+} 
+
+
+@media (min-width:402px) and (max-width:767px)
+{
+    .navbar-brand{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 0%;
+        top:-31%;
+        left:0%;
+    }
+} 
+
+
+@media (min-width:50px) and (max-width:766px)
+{
+    .navbar-brand{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 0%;
+        top:-31%;
+        left:0%;
+    }
+} 
+
+
+ 
+/* @media (width:768px){
+    .navbar-brand{display: flex;
+        justify-content: center;
+        position: absolute;
+        width: 2%;
+        top:1%;
+} */
+
+ 
+
+/*end overriding the bootstrap classes*/
+
+
+
+/*start about section*/
+
+.about {
+    padding-top:60px;
+    padding-bottom: 60px;
+}
+
+.about .lead {
+    color:#888;
+    font-size:25px;
+    margin-top: 15px;
+}
+
+.about h1 span {
+    color:#71ff7a
+}
+
+/*end about section*/
+
+/*start features section*/
+
+.features {
+    background: rgb(146, 52, 52);
+    padding-top:50px;
+    padding-bottom: 50px;
+    color: white;
+}
+.features .feat 
+{
+    margin-bottom: 30px;
+}
+
+.features h1 {
+    margin-bottom: 35px;
+}
+
+.features .feat p{
+    line-height: 2em;
+} 
+
+.features .feat span.glyphicon{
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: #71ff7a
+}
+
+
+
+/*end features section*/
+
+
+
+/* start benefits section */
+
+.mypictue{
+
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1%;
+    margin-top:1%;
+}
+.mycontent{
+    width: 100%;
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    color: aquamarine;
+    margin-bottom: 1%;
+    margin-top:1%;
+    margin-left: 0%;
+}
+
+
+.mypictue img {
+    background: red;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform 2s;
+    object-fit: cover;
+}
+
+
+.mypictue img:hover {
+    width: 300px;
+  height: 300px;
+  -webkit-transform: rotate(180deg); /* Safari */
+  transform: rotate(180deg);
+}
+
+.mypictue img {
+    width:100%;
+    border-right: 2px solid #71ff7a;
+}
+
+/* end benefits section*/
+
+
+/*start products section*/
+
+.backg {
+    background-color: #71ff7a;
+    widows: 100%;
+}
+
+
+.slider {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .slider .slide {
+    display: flex;
+    position: absolute;
+    left: 0;
+    transition: 0.3s left ease-in-out;
+  }
+  
+  .slider .item {
+    margin-right: 10px;
+  }
+  
+  .slider .item:last-child {
+    margin-right: 0;
+  }
+  
+  .ctrl {
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .ctrl-btn {
+    padding: 20px 20px;
+    min-width: 50px;
+    background: #fff;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    opacity: .5;
+    position: absolute;
+    top: 50%;
+    margin-top: -27.5px;
+  }
+  
+  .ctrl-btn.pro-prev {
+    left: 0;
+  }
+  
+  .ctrl-btn.pro-next {
+    right: 0;
+  }
+  
+
+.line 
+{
+
+    width: 14%;
+}
+
+
+
+/*end products section*/
