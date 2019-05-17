@@ -29,5 +29,17 @@
         </form>
       </div>
     </div>
+    <hr>
+    <h4 style="font-weight: bold; float: right">تسجيل الدخزل باستخدام</h4>
+    <br>
+    <br>
+    <ul style="list-style-type: none">
+      <li style="float: right;margin-left: 1rem">
+        <a style="color: blue" class="btn btn-default" href="{% url 'social:begin' 'facebook' %}">الفيس بوك</a>
+      </li>
+      <li style="float: right;">
+        <a style="color: orangered" class="btn btn-default" href="{% url 'social:begin' 'google-oauth2' %}">جوجل</a>
+      </li>
+    </ul>
   </div>
 {% endblock content %}

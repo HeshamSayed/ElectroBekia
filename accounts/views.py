@@ -32,7 +32,7 @@ def user_login(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
     try:
-      user = User.objects.get(email__iexact=email) or User.objects.get(phone__iexact=email)
+      user = User.objects.get(email__iexact=email) #or User.objects.get(phone__iexact=email)
     except User.DoesNotExist:
       context = {
         'form': {
@@ -42,8 +42,10 @@ def user_login(request):
       return render(request, 'accounts/login.html', context)
 
     if user.check_password(password):
-      login(request, user)
+      login(request, user, backend='django.contrib.auth.backends.ModelBackend')
       next = request.POST.get('next', '/') or '/'
+      if next == '/accounts/login/' or next == '/accounts/signup/':
+        next = '/'
       return HttpResponseRedirect(next)
     else:
       context = {
@@ -54,4 +56,8 @@ def user_login(request):
       return render(request, 'accounts/login.html', context)
   else:
     return render(request, 'accounts/login.html', {})
+
+
+def user_redirect(request):
+  return redirect('/')
 

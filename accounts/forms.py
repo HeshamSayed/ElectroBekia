@@ -9,18 +9,18 @@ class SignupForm(UserCreationForm):
     first_name = forms.CharField(label='الاسم الاول', max_length=30, required=True)
     last_name = forms.CharField(label='الاسم الاخير', max_length=30, required=True)
     email = forms.EmailField(label='البريد الالكترونى', max_length=100, help_text='مطلوب', required=True)
-    phone_regex = RegexValidator(
-      regex=r'^01[1|0|2|5][0-9]{8}$',
-      message="من فضلك ادخل رقم هاتف مصري صحيح"
-    )
-    phone = forms.CharField(
-      label='رقم الهاتف المحمول',
-      validators=[phone_regex], max_length=11, min_length=11,
-      required=True, widget=forms.TextInput(attrs={
-        'pattern': '^01[1|0|2|5][0-9]{8}$',
-      }),
-      help_text=_('من فضلك ادخل رقم موبايل صحيح')
-    )
+    # phone_regex = RegexValidator(
+    #   regex=r'^01[1|0|2|5][0-9]{8}$',
+    #   message="من فضلك ادخل رقم هاتف مصري صحيح"
+    # )
+    # phone = forms.CharField(
+    #   label='رقم الهاتف المحمول',
+    #   validators=[phone_regex], max_length=11, min_length=11,
+    #   required=True, widget=forms.TextInput(attrs={
+    #     'pattern': '^01[1|0|2|5][0-9]{8}$',
+    #   }),
+    #   help_text=_('من فضلك ادخل رقم موبايل صحيح')
+    # )
 
     date_of_birth = forms.DateField(
       label='تاريخ الميلاد',
@@ -47,7 +47,7 @@ class SignupForm(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'email', 'phone',
+        fields = ('first_name', 'last_name', 'email',
                   'password1', 'password2', 'date_of_birth',
                   'city', 'user_category')
 
