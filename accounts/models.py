@@ -58,12 +58,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30, blank=True, null=True)
     points = models.PositiveIntegerField(default=0)
     user_category = models.BooleanField(default=1)
-    #
-    # phone_regex = RegexValidator(regex=r'^01[1|0|2|5][0-9]{8}$',
-    #                              message="Phone number must match egyptian format")
-    # phone = models.CharField(validators=[phone_regex], max_length=11,
-    #                          blank=True, unique=True,
-    #                          help_text=_('من فضلك ادخل رقم موبايل صحيح'),)
+
+    phone_regex = RegexValidator(regex=r'^01[1|0|2|5][0-9]{8}$',
+                                 message="Phone number must match egyptian format")
+    phone = models.CharField(validators=[phone_regex], max_length=11,
+                             blank=True, null=True,
+                             help_text=_('من فضلك ادخل رقم موبايل صحيح'),)
 
     city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
 
@@ -94,4 +94,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
       return self.email
+
+
+class PhoneNumber(models.Model):
+  phone_regex = RegexValidator(regex=r'^01[1|0|2|5][0-9]{8}$',
+                               message="Phone number must match egyptian format")
+  phone = models.CharField(validators=[phone_regex], max_length=11,
+                           blank=True, unique=True,
+                           help_text=_('من فضلك ادخل رقم موبايل صحيح'))
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 

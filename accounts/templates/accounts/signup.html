@@ -4,6 +4,9 @@
   <div class="container">
     <div class="row">
       <div style="float: right;text-align: right;" class="col-md-8 login-form">
+        {% if form.err %}
+          <p style="color: red;">{{ form.err }}</p>
+        {% endif %}
         <form method="post" class="signup-form" enctype="multipart/form-data">
           {% csrf_token %}
           {% for field in form %}

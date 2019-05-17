@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import SignupForm
 from django.views import View
 from django.http import HttpResponseRedirect
-from .models import User
+from .models import User, PhoneNumber
 from django.contrib.auth import login
 
 
@@ -18,8 +18,21 @@ class Signup(View):
       return redirect('/')
     form = SignupForm(request.POST)
     if form.is_valid():
-      user = form.save(commit=False)
-      user.save()
+      phone = form.cleaned_data['phone']
+      try:
+        phone_number = PhoneNumber.objects.get(phone__iexact=phone)
+        form.err = 'تم استخدام هذا الرقم من قبل من فضلك ادخل رقم هاتف صحيح'
+        # context = {
+        #   'form': {
+        #     'errors': 'تم استخدام هذا الرقم من قبل من فضلك ادخل رقم هاتف صحيح'
+        #   },
+        # }
+        return render(request, 'accounts/signup.html', {'form': form})
+      except PhoneNumber.DoesNotExist:
+        user = form.save(commit=False)
+        user.save()
+        new_phone = PhoneNumber(phone=phone, user=user)
+        new_phone.save()
       return redirect('accounts:login')
     else:
       return render(request, 'accounts/signup.html', {'form': form})
@@ -32,7 +45,9 @@ def user_login(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
     try:
-      user = User.objects.get(email__iexact=email) #or User.objects.get(phone__iexact=email)
+      user = User.objects.filter(email__iexact=email).first()
+      if not user:
+        user = User.objects.get(phone__iexact=email)
     except User.DoesNotExist:
       context = {
         'form': {
