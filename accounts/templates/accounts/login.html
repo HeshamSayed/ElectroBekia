@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div style="float: right;text-align: right" class="col-md-8 login-form">
+        {% if form.errors %}
+          <p style="color: red;">{{ form.errors }}</p>
+        {% endif %}
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" , name="next" value="{{ next }}"/>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> البريد الالكترونى او رقم الموبايل: </label>
+            <input style="text-align: right" type="text" name="email"
+                   class="form-control" id="exampleInputEmail1"
+                   aria-describedby="emailHelp" required
+                   placeholder="ادخل رقم الهاتف او البريد الالكترونى">
+            <small id="emailHelp" class="form-text text-muted"> من فضلك ادخل رقم الهاتف او البريد الالكترونى بشكل صحيح</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">الرقم السري</label>
+            <input style="text-align: right" type="password" name="password"
+                   class="form-control" id="exampleInputPassword1" required
+                   placeholder="الرقم السري">
+          </div>
+          <input type="hidden" name="next" value="{{ request.GET.next }}">
+          <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
