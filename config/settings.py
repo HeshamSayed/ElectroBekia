@@ -32,6 +32,7 @@ INSTALLED_APPS = [
   'social_django',
   'accounts',
   'products',
+  'cart',
   'django.contrib.admin',
   'django.contrib.auth',
   'django.contrib.contenttypes',
@@ -73,6 +74,7 @@ TEMPLATES = [
         'django.template.context_processors.request',
         'django.contrib.auth.context_processors.auth',
         'django.contrib.messages.context_processors.messages',
+        'cart.context_processors.cart',
         'social_django.context_processors.backends',
         'social_django.context_processors.login_redirect',
       ],
@@ -138,15 +140,15 @@ LOGOUT_REDIRECT_URL = '/'
 # facebook keys
 SOCIAL_AUTH_FACEBOOK_KEY = '314700825747438'
 SOCIAL_AUTH_FACEBOOK_SECRET = '670de008bb0f537f268fc1bc12394bcc'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link'] # add this
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       # add this
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']  # add this
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {  # add this
   'fields': 'id, name, email, picture.type(large), link'
 }
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
-    ('name', 'name'),
-    ('email', 'email'),
-    ('picture', 'picture'),
-    ('link', 'profile_url'),
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [  # add this
+  ('name', 'name'),
+  ('email', 'email'),
+  ('picture', 'picture'),
+  ('link', 'profile_url'),
 ]
 
 # google keys
@@ -155,4 +157,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XQ_FJOlPqNRrsrDjrO_ZSHdr'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+CART_SESSION_ID = 'cart'
 

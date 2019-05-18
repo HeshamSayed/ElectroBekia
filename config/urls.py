@@ -27,4 +27,5 @@ urlpatterns = [
   path('accounts/', include('accounts.urls', namespace='accounts')),
   url(r'^oauth/', include('social_django.urls', namespace='social')),
   path('products/', include('products.urls', namespace='products')),
+  path('cart/', include('cart.urls', namespace='cart')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + staticfiles_urlpatterns()

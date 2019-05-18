@@ -10,10 +10,19 @@
         <br>
       {% endif %}
       <h4 style="float: right">الوصف</h4><br><br><br>
-      <div><p style="float: right;">{{ product.description }}</p></div><br><br>
-      <div><p style="float: right">اقل سعر: {{ product.min_price }}</p></div><br><br>
-      <div><p style="float: right">اعلى سعر: {{ product.max_price }}</p></div><br><br>
-      <div><p style="float: right"> قسم: {{ product.category }}</p></div><br><br>
+      <div><p style="float: right;">{{ product.description }}</p></div>
+      <br><br>
+      <div><p style="float: right">اقل سعر: {{ product.min_price }}</p></div>
+      <br><br>
+      <div><p style="float: right">اعلى سعر: {{ product.max_price }}</p></div>
+      <br><br>
+      <div><p style="float: right"> قسم: {{ product.category }}</p></div>
+      <br><br>
+      <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {% csrf_token %}
+        {{ cart_product_form }}
+        <input type="submit" value="اضف الى العربه" class="btn btn-info">
+      </form>
     </div>
   </div>
 {% endblock %}
