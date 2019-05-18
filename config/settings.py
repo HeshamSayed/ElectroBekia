@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
   'social_django',
   'accounts',
+  'products',
   'django.contrib.admin',
   'django.contrib.auth',
   'django.contrib.contenttypes',
@@ -151,3 +152,7 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
 # google keys
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '127248638826-hiku5idecj4buhqtepqvlanum3n1g3eu.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XQ_FJOlPqNRrsrDjrO_ZSHdr'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
