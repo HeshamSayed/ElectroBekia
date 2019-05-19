@@ -5,15 +5,18 @@
 /*end Design the search*/
 
 
-
 /*start Design the cursol*/
 /* body{
     height: 2000px;
 } */
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
 	font-family: "Swissra Font";
-	src: url(../fonts/Swissra\ Ultra\ Light_0.otf) format("truetype");
+	src: url("{% static 'fonts/Swissra\ Ultra\ Light_0.otf' %}") format("truetype");
 }
 
 
