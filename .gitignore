@@ -1,4 +1,4 @@
 .idea/
-db.sqlite3
+pytdb.sqlite3
 *.pyc
 
