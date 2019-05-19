@@ -24,7 +24,6 @@ from django.conf import settings
 urlpatterns = [
   path('admin/', admin.site.urls),
   path('', index, name='base'),
-  path('electroBekia/', index, name='electrobekia'),
   path('accounts/', include('accounts.urls', namespace='accounts')),
   url(r'^oauth/', include('social_django.urls', namespace='social')),
   path('products/', include('products.urls', namespace='products')),
