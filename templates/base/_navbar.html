@@ -1,23 +1,28 @@
 {% load static %}
+{%block style%}
+<link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/hover.css' %}"/>
+
+{%endblock%}
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="navbar-brand">
-        <img src="" style="width:75px;height: 50px;background-color:red"/></div>
+      <div class="navbar-brand" >
+          <img src="{% static 'images/logo.png' %}" style="height:49px"/></div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">الصفحة الرئيسيه <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/ElectroBekia/">الصفحة الرئيسيه <span class="sr-only">(current)</span></a></li>
         <li><a href="#">من نحن</a></li>
         <li><a href="#"> بيع</a></li>
         <li><a href="#"> اتصل بنا</a></li>
