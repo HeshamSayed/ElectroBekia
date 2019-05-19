@@ -12,7 +12,7 @@
                 {% if form.errors %}
                   <p style="color: red;">{{ form.errors }}</p>
                 {% endif %}
-                <form role="form">
+                <form role="form" method="POST">
                   {% csrf_token %}
                   <input type="hidden" , name="next" value="{{ next }}"/>
                   <div class="col-lg-12 loginPage  wow bounceInUp">

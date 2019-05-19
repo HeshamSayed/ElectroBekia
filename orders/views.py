@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import OrderCreateForm
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from .models import *
-from django.http import HttpResponse
 
 
 @login_required
@@ -23,7 +22,7 @@ def order_create(request):
           quantity=item['quantity']
         )
       cart.clear()
-    return HttpResponse('تم ارسال طلبك بنجاح برجاء الانتظار')
+    return redirect('orders:order_detail', pk=order.id)
   else:
     form = OrderCreateForm()
     return render(request, 'orders/create.html', {'form': form})
