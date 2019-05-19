@@ -1,22 +1,23 @@
 {% load static %}
-{%block style%}
-<link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
-<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-<link rel="stylesheet" href="{% static 'css/hover.css' %}"/>
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/hover.css' %}"/>
 
-{%endblock%}
+{% endblock %}
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="navbar-brand" >
-          <img src="{% static 'images/logo.png' %}" style="height:49px"/></div>
+      <div class="navbar-brand">
+        <img src="{% static 'images/logo.png' %}" style="height:49px"/></div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,6 +28,9 @@
         <li><a href="#"> بيع</a></li>
         <li><a href="#contact_us"> اتصل بنا</a></li>
         <li><a href="{% url 'products:product_list' %}">منتجاتنا</a></li>
+        {% if request.user.is_authenticated %}
+          <li><a href="{% url 'orders:order_list' %}">طلباتى</a></li>
+        {% endif %}
       </ul>
       <ul class="nav navbar-nav ">
         <li><a class="glyphicon glyphicon-shopping-cart" href="{% url 'cart:cart_detail' %}"></a></li>

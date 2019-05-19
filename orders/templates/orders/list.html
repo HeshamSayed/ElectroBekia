@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <h2 style="text-align: center;">طلباتى</h2>
+      <div style="float: right;text-align: right" class="col-md-12">
+        {% for o in oredrs %}
+          <div style="border: 1px solid green;width: 30%;margin-left: 3%;
+                      margin-bottom: 4rem;float: right;" class="card {{ o.category.id }}">
+            {% if o.image %}
+              <img style="width: 100%;height: 150px;" src="{{ o.image.url }}" class="card-img-too" alt="...">
+            {% endif %}
+            <div class="card-body">
+              <h4 class="card-title">{{ o.order_status }} -: حاله الطلب </h4>
+              <h5 class="card-title">{{ o.id }} -:  رقم الطلب </h5>
+              <p class="card-text">{{ o.last_name }} {{ o.first_name }} -: مقدم الطلب </p>
+              <p class="card-text">{{ o.created }} -: تاريخ الطلب </p>
+              <a href="{% url 'orders:order_detail' o.id %}" class="btn btn-primary"> المزيد</a>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

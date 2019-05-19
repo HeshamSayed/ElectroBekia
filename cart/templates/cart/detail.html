@@ -59,10 +59,10 @@
         <a href="{% url 'products:product_list' %}" class="btn btn-info">اضف مزيد من المنتجات</a>
         <a href="{% if request.user.is_authenticated %}
                    {% if cart|length > 0 %}
-                     '#'
+                     {% url 'orders:order_create' %}
                    {% endif %}
                  {% else %}
-                   {% url 'accounts:login' %}
+                   {% url 'accounts:login' %}?next={{ request.path|urlencode }}
                  {% endif %}"
            class="btn btn-info">بيع</a>
       </p>

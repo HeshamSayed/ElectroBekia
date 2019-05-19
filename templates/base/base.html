@@ -1,34 +1,37 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
-    <meta name="viewport" content="width=device-width,intial-scale=1"/>
-    <title>ElectroBekia</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <meta name="viewport" content="width=device-width,intial-scale=1" />
-    <title>ElectroBekia</title>
-    <link href="https://fonts.googleapis.com/css?family=Mada&display=swap" rel="stylesheet">
-    <!--including Design libs-->
-    <link href="https://fonts.googleapis.com/css?family=Mada|Markazi+Text&display=swap" rel="stylesheet">
-    {% block style %}
-    {% endblock style %}
-  </head>
-  <body>
-    {% include "base/_navbar.html" %}
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link href="https://fonts.googleapis.com/css?family=Mada|Markazi+Text&display=swap" rel="stylesheet">
+  <title>ElectroBekia</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/hover.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+  <!--including Design libs-->
 
-    {% block content %}
-    {% endblock content %}
+  {% block style %}
+  {% endblock style %}
+</head>
+<body>
+{% include "base/_navbar.html" %}
 
-    {% include "base/_footer.html" %}
+{% block content %}
+{% endblock content %}
 
-    <!--including js libs-->
-    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/plugins.js' %}"></script>
-  </body>
+{% include "base/_footer.html" %}
+
+<!--including js libs-->
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script>
+  new WOW().init();
+</script>
+</body>
 </html>

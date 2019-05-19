@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div style="text-align: center" class="row">
+      {% if order.image %}
+        <img src="{{ order.image.url }}" alt="..." style="width: 50%">
+        <br>
+      {% endif %}
+      <h4 class="card-title">{{ order.order_status }} -: حاله الطلب </h4><br><br><br>
+      <h5 class="card-title">{{ order.id }} -: رقم الطلب </h5>
+      <div><p style="float: right;">{{ order.last_name }} {{ order.first_name }} -: مقدم الطلب </p></div>
+      <br><br>
+      <div><p style="float: right">{{ order.ad }} -: عنوان الطلب </p></div>
+      <br><br>
+      <div><p style="float: right">{{ order.created }} -: تاريخ الطلب </p></div>
+      <br><br>
+
+      {% for item in order.items.all %}
+        {% if item.product.image %}
+          <img style="width: 10%;height: 150px;" src="{{ item.product.image.url }}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ item.product.name }}</h5>
+          <p class="card-text">{{ item.product.description }}</p>
+          <a href="{% url 'products:product_detail' item.product.id %}" class="btn btn-primary">المزيد</a>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}

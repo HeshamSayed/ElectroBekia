@@ -74,7 +74,6 @@
         {% for p in products %}
           <div class="card filterDiv {{ p.category.id }}">
             {% if p.image %}
-              {{ request.user.image.url }}
               <img style="width: 100%;height: 150px;" src="{{ p.image.url }}" class="card-img-top" alt="...">
             {% endif %}
             <div class="card-body">
