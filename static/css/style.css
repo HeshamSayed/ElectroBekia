@@ -13,16 +13,19 @@
 
 @font-face {
 	font-family: "Swissra Font";
-	src: url("../fonts/Swissra_Ultra_Light_0.otf") format("truetype");
+	src: url("/static/fonts/Swissra_Ultra_Light_0.otf") format("truetype");
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
 	/*font-family: 'Open Sans', sans-serif;*/
   /* font-family: 'Swissra Font'; */
 	font-size: 18px;
 	font-weight: 300;
-    font-family: 'Markazi Text', serif;
+  font-family: 'Markazi Text', serif;
 }
 
 
@@ -301,7 +304,7 @@ body {
 
 /* start benefits section */
 .backPic{
-    background: url("../images/cover1.png") no-repeat center center fixed;
+    background: url("/static/images/cover1.png") no-repeat center center fixed;
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
@@ -465,7 +468,7 @@ body {
 /*start contact media section*/
 
 .contact-us{
-    background: url("../images/man-headset-working-laptop.jpg") no-repeat center center fixed;
+    background: url("/static/images/man-headset-working-laptop.jpg") no-repeat center center fixed;
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
