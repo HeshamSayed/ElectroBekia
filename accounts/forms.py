@@ -61,11 +61,12 @@ class SignupForm(UserCreationForm):
     'autocomplete': 'off',
   }), help_text='ادخل الرقم السري مره اخرى للتاكيد')
 
-  date_of_birth = forms.DateField(required=True, widget=forms.DateInput(attrs={
-    'class': "form-control input-lg text-right",
-    'autocomplete': 'off',
-    'type': 'date',
-  }))
+  date_of_birth = forms.DateField(
+    required=True, label='تاريخ الميلاد', widget=forms.DateInput(attrs={
+      'class': "form-control input-lg text-right",
+      'autocomplete': 'off',
+      'type': 'date',
+    }))
 
   city = forms.ModelChoiceField(
     queryset=City.objects, required=True, empty_label='البلد',
