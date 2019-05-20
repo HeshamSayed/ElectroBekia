@@ -40,6 +40,8 @@ INSTALLED_APPS = [
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+  'rest_framework',
+  'electroapi',
 ]
 
 MIDDLEWARE = [
@@ -161,4 +163,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 CART_SESSION_ID = 'cart'
+
+
+
 
