@@ -24,9 +24,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="{% url 'base' %}">الصفحة الرئيسيه <span class="sr-only">(current)</span></a></li>
-        <li><a href="#about">من نحن</a></li>
+        <li><a href="{% url 'base' %}#about">من نحن</a></li>
         <li><a href="#"> بيع</a></li>
-        <li><a href="#contact_us"> اتصل بنا</a></li>
+        <li><a href="{% url 'base' %}#contact_us"> اتصل بنا</a></li>
         <li><a href="{% url 'products:product_list' %}">منتجاتنا</a></li>
         {% if request.user.is_authenticated %}
           <li><a href="{% url 'orders:order_list' %}">طلباتى</a></li>

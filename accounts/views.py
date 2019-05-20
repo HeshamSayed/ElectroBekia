@@ -21,12 +21,7 @@ class Signup(View):
       phone = form.cleaned_data['phone']
       try:
         phone_number = PhoneNumber.objects.get(phone__iexact=phone)
-        form.err = 'تم استخدام هذا الرقم من قبل من فضلك ادخل رقم هاتف صحيح'
-        # context = {
-        #   'form': {
-        #     'errors': 'تم استخدام هذا الرقم من قبل من فضلك ادخل رقم هاتف صحيح'
-        #   },
-        # }
+        form.err = 'تم استخدام رقم الهاتف من قبل من فضلك ادخل رقم هاتف غير مستخدم في حسابات اخري'
         return render(request, 'accounts/signup.html', {'form': form})
       except PhoneNumber.DoesNotExist:
         user = form.save(commit=False)
