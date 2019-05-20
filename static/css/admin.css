@@ -1,0 +1,25 @@
+.outer {
+}
+.inner {
+  margin: auto; /* or 0 if you want to maintain its position in the upper-left corner */
+}
+body,
+html {
+  height: 100%;
+}
+.outer {
+  height: auto;
+  background: rgb(190, 255, 165);
+  padding-top: 1%;
+  min-height: 80%;
+  position: relative;
+}
+.inner {
+  position: relative;
+  box-sizing: border-box; /* required if you're using padding */
+}
+.center-div{
+    margin-top: 18%;
+    font-size : 40px;
+    color:rgb(6, 56, 6);
+}
