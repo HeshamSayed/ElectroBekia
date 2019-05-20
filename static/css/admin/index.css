@@ -1,0 +1,26 @@
+/* DASHBOARD */
+#header{
+    background: #175617;
+    border-bottom: 2px solid white;
+}
+
+div.breadcrumbs {
+    background: #175617;
+}
+
+#user-tools, #user-tools a:visited, #user-tools a:link, #user-tools strong, #branding h1 a:visited {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#recent-actions-module{
+    float: right;
+}
+.dashboard .module table th {
+    width: 100%;
+}
+.dashboard caption {
+    width: 100%;
+    background: #175617;
+}
