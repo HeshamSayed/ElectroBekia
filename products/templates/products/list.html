@@ -60,6 +60,11 @@
         <div id="myBtnContainer">
           <ul>
             <li>
+              <input id="se" style="text-align: right" onkeyup="filter()"
+                     class="form-control my-0 py-1 lime-border"
+                     type="text" placeholder="ابحث باسم المنتج" aria-label="Search">
+            </li>
+            <li>
               <button class="btn active" onclick="filterSelection('all')"> عرض الكل</button>
             </li>
             {% for cat in categories %}
@@ -131,6 +136,23 @@
               this.className += " active";
             });
           }
+
+          let x = document.getElementsByClassName("card");
+          let se = document.getElementById("se");
+          function filter() {
+            let seValue = se.value;
+            if (seValue == "") {
+              filterSelection("all")
+            } else {
+              for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                let h = x[i].getElementsByTagName('h5')[0];
+                let txtValue = h.textContent || h.innerText;
+                if (txtValue.toUpperCase().indexOf(seValue) > -1) w3AddClass(x[i], "show");
+              }
+            }
+          }
+
         </script>
       </div>
     </div>

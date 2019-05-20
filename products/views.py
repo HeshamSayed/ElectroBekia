@@ -9,7 +9,7 @@ def product_list(request):
 
   context = {
     'categories': categories,
-    'products': products
+    'products': products,
   }
 
   return render(request, 'products/list.html', context)
