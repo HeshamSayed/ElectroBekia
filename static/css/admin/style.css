@@ -1,42 +1,42 @@
 #header {
-    background-color: #175617;
-    border-bottom: 2px solid white;
+    background-color: #008032;
+    border-bottom: 2px solid #e2e7e9;
 }
 
 div.breadcrumbs {
-    background: #175617;
+    background: #008032;
 }
 
 #user-tools, #user-tools a:visited, #user-tools a:link, #user-tools strong, #branding h1 a:visited {
-    color: white;
+    color: #e2e7e9;
     font-size: 15px;
     font-weight: bold;
 }
 
 #changelist-filter h2 {
-    background: #175617;
+    background: #008032;
 }
 
 .object-tools a:link, .object-tools a:visited, #changelist #toolbar form input[type="submit"], #changelist .actions .button {
-    background-color: #175617;
-    color: white;
+    background-color: #008032;
+    color: #e2e7e9;
 }
 
 thead th, thead th a:link, thead th a:link, thead th a:visited {
-    background-color: #175617;
-    color: white;
+    background-color: #008032;
+    color: #e2e7e9;
 }
 
 thead th:hover, thead th a:link:hover, thead th a:link:hover, thead th a:visited:hover {
-    background-color: white;
-    color: #175617;
-    border: 2px solid #175617;
+    background-color: #e2e7e9;
+    color: #008032;
+    border: 2px solid #008032;
     font-weight: bold;
 }
 
 th .sortoptions .clear {
-    background-color: #175617;
-    color: white;
+    background-color: #008032;
+    color: #e2e7e9;
 }
 
 thead th.sorted .text {
@@ -44,13 +44,13 @@ thead th.sorted .text {
 }
 
 .paginator a:link, .paginator a:visited, .paginator a:focus {
-    background-color: #175617;
-    color: white;
+    background-color: #008032;
+    color: #e2e7e9;
 }
 
 .paginator a:hover {
-    background-color: white;
-    color: #175617;
+    background-color: #e2e7e9;
+    color: #008032;
 }
 
 .paginator .this-page {
@@ -70,13 +70,13 @@ thead th.sorted .text {
 }
 
 .submit-row input, .submit-row input.default {
-    background-color: #175617;
-    color: white;
+    background-color: #008032;
+    color: #e2e7e9;
 }
 
 .module h2, fieldset.collapsed h2 ,fieldset.collapsed a:link{
-    background-color: #175617;
-    color: white;
+    background-color: #008032;
+    color: #e2e7e9;
     width: 100px;
     border-radius: 3px;
 }
@@ -84,9 +84,9 @@ thead th.sorted .text {
 
 
 .submit-row input:hover, .submit-row input.default:hover {
-    background-color: white;
-    color: #175617;
-    border: 2px solid #175617;
+    background-color: #e2e7e9;
+    color: #008032;
+    border: 2px solid #008032;
     font-weight: bold;
 }
 
@@ -96,10 +96,10 @@ label {
 }
 
 div .breadcrumbs {
-    background: #175617;
+    background: #008032;
 }
 
 #changelist-filter li.selected a {
-    color: #175617;
+    color: #008032;
     font-weight: bolder;
 }

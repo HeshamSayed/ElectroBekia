@@ -37,9 +37,9 @@ class UserAdmin(admin.ModelAdmin):
 
     def User_Category(self, obj):
         if obj.user_category == 1:
-            return "in"
+            return "مستخدم منزلي"
         else:
-            return "not in"
+            return "مركز صيانة"
 
     def full_name(self, obj):
         if obj.first_name and obj.last_name:
