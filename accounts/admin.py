@@ -27,18 +27,10 @@ class UserAdmin(admin.ModelAdmin):
     )
 
     list_filter = ['user_category']
-    list_per_page = 2
+    list_per_page = 10
     search_fields = ['email']
     readonly_fields = ['last_login', 'points', 'email']
     view_on_site = False
-
-    # custom template
-
-    # change_form_template = 'admin/display/change.html'
-    # render add form user
-    # add_form_template = 'admin/display/add.html'
-    # change_list_template = 'admin/display/list.html'
-    # change the value of bolaen column
 
     def has_add_permission(self, request, obj=None):
         return False
@@ -63,7 +55,7 @@ class UserAdmin(admin.ModelAdmin):
     full_name.short_description = "Full Name"
     User_Category.admin_order_field = 'user_category'
 
-    empty_value_display = '-empty-'
+    empty_value_display = 'empty field'
 
     class Media:
         css = {
@@ -78,6 +70,7 @@ class CityAdmin(admin.ModelAdmin):
         css = {
             'all': ('css/admin/style.css',)
         }
+
 
 class PhoneAdmin(admin.ModelAdmin):
     list_display = ['phone', 'user_name']
@@ -100,6 +93,7 @@ class PhoneAdmin(admin.ModelAdmin):
             'all': ('css/admin/style.css',)
         }
 
+
 admin.site.register(User, UserAdmin)
 admin.site.register(City, CityAdmin)
-admin.site.register(PhoneNumber,PhoneAdmin)
+admin.site.register(PhoneNumber, PhoneAdmin)
