@@ -29,4 +29,5 @@ urlpatterns = [
   path('products/', include('products.urls', namespace='products')),
   path('cart/', include('cart.urls', namespace='cart')),
   path('orders/', include('orders.urls', namespace='orders')),
+  path('api/', include('electroapi.urls', namespace='electroapi')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + staticfiles_urlpatterns()
