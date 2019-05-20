@@ -79,7 +79,27 @@ class CityAdmin(admin.ModelAdmin):
             'all': ('css/admin/style.css',)
         }
 
+class PhoneAdmin(admin.ModelAdmin):
+    list_display = ['phone', 'user_name']
+
+    # list_display_links = [('none')]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def user_name(self, obj):
+        return obj.user.first_name + " " + obj.user.last_name
+
+    user_name.admin_order_field = 'user'
+
+    class Media:
+        css = {
+            'all': ('css/admin/style.css',)
+        }
 
 admin.site.register(User, UserAdmin)
 admin.site.register(City, CityAdmin)
-admin.site.register(PhoneNumber)
+admin.site.register(PhoneNumber,PhoneAdmin)
