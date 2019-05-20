@@ -59,13 +59,20 @@ class UserAdmin(admin.ModelAdmin):
         else:
             return "has no name"
 
-
     full_name.admin_order_field = Concat('first_name', Value(' '), 'last_name')
     full_name.short_description = "Full Name"
     User_Category.admin_order_field = 'user_category'
 
     empty_value_display = '-empty-'
 
+    class Media:
+        css = {
+            'all': ('css/admin/style.css',)
+        }
+
+
+class CityAdmin(admin.ModelAdmin):
+    list_display = ['name', 'governorate']
 
     class Media:
         css = {
@@ -74,5 +81,5 @@ class UserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdmin)
-admin.site.register(City)
+admin.site.register(City, CityAdmin)
 admin.site.register(PhoneNumber)
