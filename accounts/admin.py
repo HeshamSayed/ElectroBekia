@@ -3,7 +3,7 @@ from .models import *
 from django.db.models import Value
 from django.db.models.functions import Concat
 
-admin.site.site_header = 'Electrobeca'
+admin.site.site_header = 'ElectroBekia'
 
 
 class UserAdmin(admin.ModelAdmin):

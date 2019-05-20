@@ -4,11 +4,7 @@
 {% block style %}
   <style>
     .filterDiv {
-      width: 30%;
-      margin-left: 3%;
-      margin-bottom: 4rem;
       display: none;
-      float: right !important;
     }
 
     .show {
@@ -20,142 +16,118 @@
       overflow: hidden;
     }
 
-    #myBtnContainer ul {
-      list-style: none;
-    }
-
-    #myBtnContainer li {
-      width: 100%;
-      float: right;
-      margin-bottom: 1rem;
-    }
-
-    /* Style the buttons */
-    #myBtnContainer .btn {
-      width: 100%;
-      float: top;
-      border: none;
-      outline: none;
-      padding: 12px 16px;
-      background-color: #f1f1f1;
-      cursor: pointer;
-    }
-
-    #myBtnContainer .btn:hover {
-      background-color: #ddd;
-    }
-
-    #myBtnContainer .btn.active {
-      background-color: #666;
-      color: white;
-    }
   </style>
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <h2 style="text-align: center;">منتجاتنا</h2>
-      <div style="float: right;text-align: right" class="col-md-3">
-        <div id="myBtnContainer">
-          <ul>
-            <li>
-              <input id="se" style="text-align: right" onkeyup="filter()"
-                     class="form-control my-0 py-1 lime-border"
-                     type="text" placeholder="ابحث باسم المنتج" aria-label="Search">
-            </li>
-            <li>
-              <button class="btn active" onclick="filterSelection('all')"> عرض الكل</button>
-            </li>
-            {% for cat in categories %}
-              <li>
-                <button class="btn" onclick="filterSelection({{ cat.id }})">{{ cat.name }}</button>
-              </li>
-            {% endfor %}
-          </ul>
+  <div class="container-fluid">
+    <div class="row CategorySection">
+      <div class="col-lg-12">
+        <div class="search col-lg-offset-2 col-lg-8 col-lg-offset-2">
+          <input type="text" id="se" onkeyup="filter()" class="form-control text-center " placeholder="بحث عن منتج">
         </div>
-      </div>
-      <div style="float: right;text-align: right" class="col-md-9">
-        {% for p in products %}
-          <div class="card filterDiv {{ p.category.id }}">
-            {% if p.image %}
-              <img style="width: 100%;height: 150px;" src="{{ p.image.url }}" class="card-img-top" alt="...">
-            {% endif %}
-            <div class="card-body">
-              <h5 class="card-title">{{ p.name }}</h5>
-              <p class="card-text">{{ p.description }}</p>
-              <a href="{% url 'products:product_detail' p.id %}" class="btn btn-primary">المزيد</a>
+
+        <div class="col-lg-3 col-lg-push-9 ">
+          <aside class="text-center asideSection ">
+            <div class="rightMenu wow bounceInRight mg-div">
+              <button onclick="filterSelection('all')" class="active">عرض الكل</button>
             </div>
-          </div>
-        {% endfor %}
-
-        <script>
-          filterSelection("all")
-
-          function filterSelection(c) {
-            var x, i;
-            x = document.getElementsByClassName("card");
-            if (c == "all") c = "";
-            for (i = 0; i < x.length; i++) {
-              w3RemoveClass(x[i], "show");
-              if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-            }
-          }
-
-          function w3AddClass(element, name) {
-            var i, arr1, arr2;
-            arr1 = element.className.split(" ");
-            arr2 = name.split(" ");
-            for (i = 0; i < arr2.length; i++) {
-              if (arr1.indexOf(arr2[i]) == -1) {
-                element.className += " " + arr2[i];
-              }
-            }
-          }
-
-          function w3RemoveClass(element, name) {
-            var i, arr1, arr2;
-            arr1 = element.className.split(" ");
-            arr2 = name.split(" ");
-            for (i = 0; i < arr2.length; i++) {
-              while (arr1.indexOf(arr2[i]) > -1) {
-                arr1.splice(arr1.indexOf(arr2[i]), 1);
-              }
-            }
-            element.className = arr1.join(" ");
-          }
-
-          // Add active class to the current button (highlight it)
-          var btnContainer = document.getElementById("myBtnContainer");
-          var btns = btnContainer.getElementsByClassName("btn");
-          for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-              for (let j = 0; j < btns.length; j++) {
-                btns[j].className = btns[j].className.replace(" active", "")
-              }
-              this.className += " active";
-            });
-          }
-
-          let x = document.getElementsByClassName("card");
-          let se = document.getElementById("se");
-          function filter() {
-            let seValue = se.value;
-            if (seValue == "") {
-              filterSelection("all")
-            } else {
-              for (i = 0; i < x.length; i++) {
-                w3RemoveClass(x[i], "show");
-                let h = x[i].getElementsByTagName('h5')[0];
-                let txtValue = h.textContent || h.innerText;
-                if (txtValue.toUpperCase().indexOf(seValue) > -1) w3AddClass(x[i], "show");
-              }
-            }
-          }
-
-        </script>
+            {% for cat in categories %}
+              <div class="rightMenu wow bounceInRight mg-div">
+                <button onclick="filterSelection({{ cat.id }})">{{ cat.name }}</button>
+              </div>
+            {% endfor %}
+          </aside>
+        </div>
+        <div class="col-lg-9 col-lg-pull-3 text-right ">
+          <section class="text-center products">
+            {% for p in products %}
+              <div style="float: right" class="col-lg-4 card filterDiv {{ p.category.id }}">
+                <div class="thumbnail itemProduct wow bounceInUp">
+                  {% if p.image %}
+                    <img  src="{{ p.image.url }}" alt="...">
+                  {% endif %}
+                  <div class="caption">
+                    <h3 class="proName">{{ p.name }}</h3>
+                    <p>{{ p.description }}</p>
+                    <a href="{% url 'products:product_detail' p.id %}"
+                       class="btn btn-success btn-lg btn-block">المزيد</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </section>
+        </div>
       </div>
     </div>
   </div>
+  <script>
+    filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("card");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementsByTagName("aside")[0];
+    var btns = btnContainer.getElementsByTagName("button");
+    console.log(btns);
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        for (let j = 0; j < btns.length; j++) {
+          btns[j].className = btns[j].className.replace("active", "")
+        }
+        this.className += " active";
+      });
+    }
+
+    let x = document.getElementsByClassName("card");
+    let se = document.getElementById("se");
+
+    function filter() {
+      let seValue = se.value;
+      if (seValue == "") {
+        filterSelection("all")
+      } else {
+        for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          let h = x[i].getElementsByTagName('h3')[0];
+          let txtValue = h.textContent || h.innerText;
+          if (txtValue.toUpperCase().indexOf(seValue) > -1) w3AddClass(x[i], "show");
+        }
+      }
+    }
+  </script>
 {% endblock %}
+
+{#-----------------------------------------------------------------------#}
+
 
