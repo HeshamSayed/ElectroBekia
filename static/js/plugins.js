@@ -1,8 +1,13 @@
+
+
 $(document).ready(function(){
     $('.carousel').carousel({
         interval:1500
     })
 })
+
+
+
 
 
 "use strict";
@@ -65,3 +70,7 @@ function getCount(parent, getChildrensChildren) {
   }
   return relevantChildren;
 }
+
+
+
+

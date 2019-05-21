@@ -6,6 +6,8 @@ from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 
 
+
+
 class City(models.Model):
   name = models.CharField(max_length=50, blank=True, null=True)
   governorate = models.CharField(max_length=50, blank=True, null=True)

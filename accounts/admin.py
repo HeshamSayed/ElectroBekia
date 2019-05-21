@@ -3,7 +3,11 @@ from .models import *
 from django.db.models import Value
 from django.db.models.functions import Concat
 
+<<<<<<< HEAD
 admin.site.site_header = ' '
+=======
+admin.site.site_header = 'ElectroBekia'
+>>>>>>> 1fdf7e70ad37760d4d4fc3786e2d33e0de8a3d7d
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -26,6 +30,7 @@ class UserAdmin(admin.ModelAdmin):
         }),
     )
 
+    # filter()
     list_filter = ['user_category']
     list_per_page = 10
     search_fields = ['email']
@@ -37,9 +42,9 @@ class UserAdmin(admin.ModelAdmin):
 
     def User_Category(self, obj):
         if obj.user_category == 1:
-            return "in"
+            return "مستخدم منزلي"
         else:
-            return "not in"
+            return "مركز صيانة"
 
     def full_name(self, obj):
         if obj.first_name and obj.last_name:
@@ -50,7 +55,7 @@ class UserAdmin(admin.ModelAdmin):
             return obj.last_name
         else:
             return "has no name"
-
+    change_list_template = 'admin/userlist.html'
     full_name.admin_order_field = Concat('first_name', Value(' '), 'last_name')
     full_name.short_description = "Full Name"
     User_Category.admin_order_field = 'user_category'
@@ -62,6 +67,9 @@ class UserAdmin(admin.ModelAdmin):
             'all': ('css/admin/style.css',)
         }
 
+        js = ('js/admin/script.js',)
+
+
 
 class CityAdmin(admin.ModelAdmin):
     list_display = ['name', 'governorate']
@@ -69,6 +77,9 @@ class CityAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': ('css/admin/style.css',)
+        }
+        js = {
+            'all': ('js/admin/script.js',)
         }
 
 
