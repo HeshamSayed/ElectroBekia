@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
   'social_django',
   'accounts',
   'products',
@@ -44,21 +43,6 @@ INSTALLED_APPS = [
   'django.contrib.staticfiles',
   'rest_framework',
   'electroapi',
-=======
-    'social_django',
-    'accounts',
-    'products',
-    'cart',
-    'orders',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'electroapi',
->>>>>>> 1fdf7e70ad37760d4d4fc3786e2d33e0de8a3d7d
 ]
 
 MIDDLEWARE = [

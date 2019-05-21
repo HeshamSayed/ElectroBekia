@@ -3,11 +3,7 @@ from .models import *
 from django.db.models import Value
 from django.db.models.functions import Concat
 
-<<<<<<< HEAD
 admin.site.site_header = ' '
-=======
-admin.site.site_header = 'ElectroBekia'
->>>>>>> 1fdf7e70ad37760d4d4fc3786e2d33e0de8a3d7d
 
 
 class UserAdmin(admin.ModelAdmin):
