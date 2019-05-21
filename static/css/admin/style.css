@@ -99,7 +99,14 @@ div .breadcrumbs {
     background: #008032;
 }
 
-#changelist-filter li.selected a {
+#changelist-filter li.selected a,#changelist-filter li.selected a:hover {
     color: #008032;
+    font-weight: bold;
+}
+#changelist-filter li a:hover {
+    color: black;
     font-weight: bolder;
+}
+#changelist-filter li a {
+    color: black;
 }
