@@ -1,0 +1,47 @@
+{% extends 'orders/admin/_admin_base.html' %} {% block content %} 
+{% load order_filter %}
+
+
+<div class="container-fluid outer">
+  <div class="row text-right inner ">
+    {%if exists%} {%for order in orders%}
+    {{ order.image.url }}
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <table class="table table-hover text-center info">
+            <tr>
+              <td>{{ order.0.id|to_ar }}</td>
+              <td> رقم الطلب</td>
+            </tr>
+            <tr>
+              <td>{{ order.0.first_name }} {{ order.0.last_name }}</td>
+              <td> اسم المستخدم</td>
+            </tr>
+            <tr>
+              <td>{{ order.0.created }}</td>
+              <td>تاريخ الطلب</td>
+            </tr>
+            <tr>
+              <td>{{ order.0.city }}</td>
+              <td>البلد</td>
+            </tr>
+            <tr>
+              <td style="font-family: 'Cairo', sans-serif;">{{ order.1|to_ar }}</td>
+              <td>عدد الأصناف</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+              <button class="see btn btn-success">مشاهدة الطلب</button>  
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    {%endfor%} {%else%}
+    <p class="center-div">لا يوجد طلبات</p>
+    {%endif%}
+  </div>
+</div>
+{% endblock%}

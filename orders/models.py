@@ -4,7 +4,8 @@ from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from accounts.models import City, User
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+import uuid
+import os
 
 class Order(models.Model):
   first_name = models.CharField(max_length=60, blank=True, null=True)
@@ -41,9 +42,23 @@ class OrderItem(models.Model):
     validators=[MinValueValidator(0.0), MaxValueValidator(1000000)],
   )
   quantity = models.PositiveIntegerField(default=1)
-
+  @property
+  def total(self):
+      # 10% taxes
+      return self.price * self.quantity
   def __str__(self):
     return str(self.product)
 
   def get_cost(self):
     return self.price * self.quantity
+
+def get_file_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('orders/', filename)
+class OrderImage(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to=get_file_path)
+
+    def __str__(self):
+        return self.Order.id

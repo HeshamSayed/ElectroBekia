@@ -14,16 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include,re_path
 from .view import *
 from django.conf.urls import url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
+from adminplus.sites import AdminSitePlus
+from .view import *
+admin.site = AdminSitePlus()
+admin.autodiscover()
 
 urlpatterns = [
-  path('admin/', admin.site.urls),
   path('', index, name='base'),
+  path('admin/', admin.site.urls, {'extra_context': get_extra_context()}),
   path('accounts/', include('accounts.urls', namespace='accounts')),
   url(r'^oauth/', include('social_django.urls', namespace='social')),
   path('products/', include('products.urls', namespace='products')),

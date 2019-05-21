@@ -1,17 +1,25 @@
 {% extends "admin/base_site.html" %}
 {% load i18n static %}
+{% load order_filter %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "css/admin/index.css" %}">{% endblock %}
+{% block title %}لوحة التحكم{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "css/admin/style.css" %}">{% endblock %}
 
 {% block coltype %}colMS{% endblock %}
 
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
 
-{% block breadcrumbs %}{% endblock %}
+{% block breadcrumbs %}
+{% endblock %}
 
 {% block content %}
-<div id="content-main">
+<div class="row">
 
+<div id="content-main" class="col-md-6">
+        <div class="admin-div text-center">
+                <p class="admin-div-head">أدوات التحكم</p>
+            </div>
 {% if app_list %}
     {% for app in app_list %}
         <div class="app-{{ app.app_label }} module">
@@ -54,33 +62,35 @@
 {% endblock %}
 
 {% block sidebar %}
-<div id="content-related">
-    <div class="module" id="recent-actions-module">
-        <h2>{% trans 'Recent actions' %}</h2>
-        <h3>{% trans 'My actions' %}</h3>
-            {% load log %}
-            {% get_admin_log 10 as admin_log for_user user %}
-            {% if not admin_log %}
-            <p>{% trans 'None available' %}</p>
-            {% else %}
-            <ul class="actionlist">
-            {% for entry in admin_log %}
-            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-                {% if entry.is_deletion or not entry.get_admin_url %}
-                    {{ entry.object_repr }}
-                {% else %}
-                    <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
-                {% endif %}
-                <br>
-                {% if entry.content_type %}
-                    <span class="mini quiet">{% filter capfirst %}{{ entry.content_type }}{% endfilter %}</span>
-                {% else %}
-                    <span class="mini quiet">{% trans 'Unknown content' %}</span>
-                {% endif %}
-            </li>
-            {% endfor %}
-            </ul>
-            {% endif %}
-    </div>
+<div id="content-related" class="col-md-5">
+        <div class="admin-div text-center">
+            <p class="admin-div-head">احصائيات الموقع</p>
+        </div>
+        <div style="padding:0 10%">
+        <table id="stats" class="table table-hover text-right">
+                <tr>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ total_users|to_ar }}</td>
+                        <td>عدد المستخدمين</td>
+                </tr>
+                <tr>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ new_orders|to_ar }}</td>
+                        <td> الطلبات الجديدة</td>
+                </tr>
+                <tr>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ waiting_orders|to_ar }}</td>
+                        <td>الطلبات قيد الانتظار </td>
+                </tr>
+                <tr>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ old_orders|to_ar }}</td>
+                        <td>الطلبات المنتهية</td>
+                </tr>
+                <tr>
+                  <td style="font-family: 'Cairo', sans-serif;">{{ all_orders|to_ar }}</td>
+                  <td>مجموع الطلبات</td>
+                </tr>
+              </table>
+            </div>
 </div>
+</div>
+
 {% endblock %}

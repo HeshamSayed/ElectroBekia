@@ -1,0 +1,63 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+{% load order_filter %}
+
+{% load i18n %}
+
+<title>ElectroBekia</title>
+{% block extrastyle %}
+<link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Mada|Markazi+Text&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "css/admin/base.css" %}{% endblock %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+{% block content_title %}{% if title %}{% endif %}{% endblock %}
+
+{% endblock %}
+<div id="header">
+        {% block usertools %}
+        {% if has_permission %}
+        <nav class="navbar navbar-inverse" style="width:100%">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand">
+                      <img src="{% static 'images/logo.png' %}" style="height:49px"/></div>
+                  </div>
+              
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="active"><a href="{% url 'admin:index' %}"> لوحة التحكم الرئيسية <span class="sr-only">(current)</span></a></li>
+                      {%if new_orders%}
+                      <li><a class = "link"  href="{% url 'admin:index' %}new-orders"> <span style="font-family: 'Cairo', sans-serif; font-size:16px;font-weight:700;color:#7a0000"> ( {{ new_orders|to_ar }} )&nbsp;&nbsp;</span> الطلبات الجديدة   </a></li>
+                      {%else%}
+                      <li><a class = "link"  href="{% url 'admin:index' %}new-orders">الطلبات الجديدة</a></li>
+                      {%endif%}
+                      <li><a  class = "link"  href="{% url 'admin:index' %}waiting-orders">الطلبات قيد الانتظار </a></li>
+                      <li><a  class = "link"  href="{% url 'admin:index' %}old-orders">الطلبات المنتهية </a></li>                    </ul>
+                    <ul class="nav navbar-nav ">
+                          {% if request.user.is_authenticated %}
+                          {% if site_url %}
+                          <li><a href="{{ site_url }}">مشاهدة الموقع</a> </li>
+                      {% endif %}
+                          {% if user.has_usable_password %}
+                          <li><a href="{% url 'admin:password_change' %}">تغيير كلمة السر</a> </li>
+                          {% endif %}
+                            <li><a href="{% url 'accounts:logout' %}?next=/admin">تسجيل الخروج</a></li>
+                          {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        {% endif %}
+        {% endblock %}
+        {% block nav-global %}{% endblock %}
+    </div>

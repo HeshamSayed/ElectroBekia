@@ -130,14 +130,11 @@ body {
   }
 }
 
-
 /* .nav li{
     float: left;
 
     
 }
-
-
 
 .navbar-nav li{
     
@@ -714,4 +711,50 @@ body {
 
 }
 
-/* end products*/
+/* admin nav */
+.active_nav{
+    font-weight: bold ;
+    font-size: 19px;
+    color : rgb(1, 41, 1);
+    background: #beffc4;
+  }
+
+  .current{
+      color : rgb(19, 0, 82) !important;
+      font-weight: 700
+  }
+/* end anmin nav */
+
+
+/* start productDetails*/
+
+.prods-details{
+
+}
+
+.backDetails{
+    background-color: #00803e;
+    color: white
+}
+
+
+.mt-proDetails{
+
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #00803e;
+
+
+}
+
+.proImage img{
+    width: 100%;
+}
+
+.bt-co
+{
+    background-color: #00803e;
+}
+
+
+/* end Product Details*/

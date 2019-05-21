@@ -1,0 +1,38 @@
+.outer {
+}
+body{
+  background: #dbfddb;
+}
+.inner {
+  margin: auto; /* or 0 if you want to maintain its position in the upper-left corner */
+}
+html {
+  height: 100%;
+}
+.outer {
+  height: auto;
+  padding-top: 1%;
+  min-height: 80%;
+  position: relative;
+}
+.inner {
+  position: relative;
+  box-sizing: border-box; /* required if you're using padding */
+}
+.center-div{
+    margin-top: 18%;
+    font-size : 40px;
+    color:rgb(6, 56, 6);
+}
+
+.info{
+  font-size: 19px;
+}
+.btn:hover{
+  color: black !important;
+}
+.see{
+  width: 80%;
+  font-size: 23px;
+  color: rgb(0, 54, 21);
+}

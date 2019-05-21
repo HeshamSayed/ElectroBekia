@@ -3,7 +3,7 @@ from .models import *
 from django.db.models import Value
 from django.db.models.functions import Concat
 
-admin.site.site_header = 'ElectroBekia'
+admin.site.site_header = ' '
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -26,6 +26,7 @@ class UserAdmin(admin.ModelAdmin):
         }),
     )
 
+    # filter()
     list_filter = ['user_category']
     list_per_page = 10
     search_fields = ['email']
@@ -50,7 +51,7 @@ class UserAdmin(admin.ModelAdmin):
             return obj.last_name
         else:
             return "has no name"
-
+    change_list_template = 'admin/userlist.html'
     full_name.admin_order_field = Concat('first_name', Value(' '), 'last_name')
     full_name.short_description = "Full Name"
     User_Category.admin_order_field = 'user_category'
@@ -62,6 +63,8 @@ class UserAdmin(admin.ModelAdmin):
             'all': ('css/admin/style.css',)
         }
 
+        js = ('js/admin/script.js',)
+
 
 class CityAdmin(admin.ModelAdmin):
     list_display = ['name', 'governorate']
@@ -69,6 +72,9 @@ class CityAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': ('css/admin/style.css',)
+        }
+        js = {
+            'all': ('js/admin/script.js',)
         }
 
 

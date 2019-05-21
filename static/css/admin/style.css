@@ -1,12 +1,13 @@
-#header {
-    background-color: #008032;
-    border-bottom: 2px solid #e2e7e9;
-}
 
 div.breadcrumbs {
     background: #008032;
 }
-
+body{
+background: #dbfddb
+}
+.dashboard #content{
+    /* width: 60% !important */
+}
 #user-tools, #user-tools a:visited, #user-tools a:link, #user-tools strong, #branding h1 a:visited {
     color: #e2e7e9;
     font-size: 15px;
@@ -92,14 +93,32 @@ thead th.sorted .text {
 
 label {
     color: black;
-    font-weight: bold;
+    font-size : 22px !important;
+
 }
 
 div .breadcrumbs {
     background: #008032;
 }
 
-#changelist-filter li.selected a {
+#changelist-filter li.selected a,#changelist-filter li.selected a:hover {
     color: #008032;
+    font-weight: bold;
+}
+#changelist-filter li a:hover {
+    color: black;
     font-weight: bolder;
+}
+
+/* DASHBOARD */
+
+#recent-actions-module{
+    float: right;
+}
+.dashboard .module table th {
+    width: 100%;
+}
+.dashboard caption {
+    width: 100%;
+    background: #539253;
 }
