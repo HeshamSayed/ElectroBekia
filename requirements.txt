@@ -2,6 +2,8 @@ certifi==2019.3.9
 chardet==3.0.4
 defusedxml==0.6.0
 Django==2.2.1
+-e git://github.com/jsocol/django-adminplus@5520e8417f195352d80db86c9020d58e8407d585#egg=django_adminplus
+djangorestframework==3.9.4
 idna==2.8
 oauthlib==3.0.1
 Pillow==6.0.0
@@ -15,5 +17,3 @@ social-auth-app-django==3.1.0
 social-auth-core==3.1.0
 sqlparse==0.3.0
 urllib3==1.25.2
-djangorestframework
--e git+https://github.com/andybak/django-admin-notifications@master#egg=django-admin-notifications

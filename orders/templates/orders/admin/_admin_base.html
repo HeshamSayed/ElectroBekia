@@ -40,8 +40,14 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="{% url 'admin:index' %}"> لوحة التحكم الرئيسية <span class="sr-only">(current)</span></a></li>
-          <li><a class = "link"  href="{% url 'admin:index' %}new-orders">الطلبات الجديدة </a></li>
-            <li><a  class = "link"  href="{% url 'admin:index' %}old-orders">الطلبات القديمة </a></li>
+          {%if new_orders%}
+          <li><a class = "link"  href="{% url 'admin:index' %}new-orders"> <span style="font-family: 'Cairo', sans-serif;font-size:16px;font-weight:700;color:#7a0000"> ( {{ new_orders|to_ar }} )&nbsp;&nbsp;</span> الطلبات الجديدة   </a></li>
+          {%else%}
+          <li><a class = "link"  href="{% url 'admin:index' %}new-orders">الطلبات الجديدة</a></li>
+          {%endif%}
+
+            <li><a  class = "link"  href="{% url 'admin:index' %}waiting-orders">الطلبات قيد الانتظار </a></li>
+            <li><a  class = "link"  href="{% url 'admin:index' %}old-orders">الطلبات المنتهية </a></li>
         </ul>
         <ul class="nav navbar-nav ">
             {% if request.user.is_authenticated %}

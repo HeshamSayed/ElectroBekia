@@ -17,7 +17,7 @@
 <div class="row">
 
 <div id="content-main" class="col-md-6">
-        <div class="admin-div">
+        <div class="admin-div text-center">
                 <p class="admin-div-head">أدوات التحكم</p>
             </div>
 {% if app_list %}
@@ -63,36 +63,33 @@
 
 {% block sidebar %}
 <div id="content-related" class="col-md-5">
-        <div class="admin-div">
+        <div class="admin-div text-center">
             <p class="admin-div-head">أحصائيات الموقع</p>
         </div>
-        <table class="table table-hover text-center info">
+        <div style="padding:0 10%">
+        <table id="stats" class="table table-hover text-right">
                 <tr>
-                  <td>{{ order.0.id|to_ar }}</td>
-                  <td> رقم الطلب</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ total_users|to_ar }}</td>
+                        <td>عدد المستخدمين</td>
                 </tr>
                 <tr>
-                  <td>{{ order.0.first_name }} {{ order.0.last_name }}</td>
-                  <td> اسم المستخدم</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ new_orders|to_ar }}</td>
+                        <td> الطلبات الجديدة</td>
                 </tr>
                 <tr>
-                  <td>{{ order.0.created }}</td>
-                  <td>تاريخ الطلب</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ waiting_orders|to_ar }}</td>
+                        <td>الطلبات قيد الانتظار </td>
                 </tr>
                 <tr>
-                  <td>{{ order.0.city }}</td>
-                  <td>البلد</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ old_orders|to_ar }}</td>
+                        <td>الطلبات المنتهية</td>
                 </tr>
                 <tr>
-                  <td style="font-family: 'Cairo', sans-serif;">{{ order.1|to_ar }}</td>
-                  <td>عدد الأصناف</td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                  <button class="see btn btn-success">مشاهدة الطلب</button>  
-                  </td>
+                  <td style="font-family: 'Cairo', sans-serif;">{{ all_orders|to_ar }}</td>
+                  <td>مجموع الطلبات</td>
                 </tr>
               </table>
+            </div>
 </div>
 </div>
 
