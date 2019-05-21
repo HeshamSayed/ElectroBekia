@@ -742,6 +742,37 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #3c763d;
     background-color: #00803e;
 }
 
-
-
 /* end Product Details*/
+
+
+/* start my cart*/
+
+.mycart{
+   
+    margin-top: 10%;
+    margin-bottom: 1.5%;
+    border: 1px solid #00803e;
+}
+
+.cartImg{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+
+.cartImg button {
+    background-color: #00803e
+}
+
+.cartImg img{
+    width: 100%;
+}
+
+.cartTitle{
+    background-color: #00803e;
+    color: white;
+}
+
+.doneBtn button{
+    margin-bottom: 1%;
+}
