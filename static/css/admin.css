@@ -1,15 +1,16 @@
 .outer {
 }
+body{
+  background: #dbfddb;
+}
 .inner {
   margin: auto; /* or 0 if you want to maintain its position in the upper-left corner */
 }
-body,
 html {
   height: 100%;
 }
 .outer {
   height: auto;
-  background: rgb(190, 255, 165);
   padding-top: 1%;
   min-height: 80%;
   position: relative;
@@ -22,4 +23,17 @@ html {
     margin-top: 18%;
     font-size : 40px;
     color:rgb(6, 56, 6);
+}
+
+.info{
+  font-size: 19px;
+}
+.btn:hover{
+  color: black !important;
+  font-size: 25px !important;
+}
+.see{
+  width: 80%;
+  font-size: 23px;
+  color: rgb(0, 54, 21);
 }

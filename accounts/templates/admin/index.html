@@ -1,0 +1,99 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% load order_filter %}
+
+{% block title %}لوحة التحكم{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "css/admin/style.css" %}">{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+<div id="content-main" class="col-md-6">
+        <div class="admin-div">
+                <p class="admin-div-head">أدوات التحكم</p>
+            </div>
+{% if app_list %}
+    {% for app in app_list %}
+        <div class="app-{{ app.app_label }} module">
+        <table>
+        <caption>
+            <a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>
+        </caption>
+        {% for model in app.models %}
+            <tr class="model-{{ model.object_name|lower }}">
+            {% if model.admin_url %}
+                <th scope="row"><a href="{{ model.admin_url }}">{{ model.name }}</a></th>
+            {% else %}
+                <th scope="row">{{ model.name }}</th>
+            {% endif %}
+
+            {% if model.add_url %}
+                <td><a href="{{ model.add_url }}" class="addlink">{% trans 'Add' %}</a></td>
+            {% else %}
+                <td>&nbsp;</td>
+            {% endif %}
+
+            {% if model.admin_url %}
+                {% if model.view_only %}
+                <td><a href="{{ model.admin_url }}" class="viewlink">{% trans 'View' %}</a></td>
+                {% else %}
+                <td><a href="{{ model.admin_url }}" class="changelink">{% trans 'Change' %}</a></td>
+                {% endif %}
+            {% else %}
+                <td>&nbsp;</td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>{% trans "You don't have permission to view or edit anything." %}</p>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="content-related" class="col-md-5">
+        <div class="admin-div">
+            <p class="admin-div-head">أحصائيات الموقع</p>
+        </div>
+        <table class="table table-hover text-center info">
+                <tr>
+                  <td>{{ order.0.id|to_ar }}</td>
+                  <td> رقم الطلب</td>
+                </tr>
+                <tr>
+                  <td>{{ order.0.first_name }} {{ order.0.last_name }}</td>
+                  <td> اسم المستخدم</td>
+                </tr>
+                <tr>
+                  <td>{{ order.0.created }}</td>
+                  <td>تاريخ الطلب</td>
+                </tr>
+                <tr>
+                  <td>{{ order.0.city }}</td>
+                  <td>البلد</td>
+                </tr>
+                <tr>
+                  <td style="font-family: 'Cairo', sans-serif;">{{ order.1|to_ar }}</td>
+                  <td>عدد الأصناف</td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                  <button class="see btn btn-success">مشاهدة الطلب</button>  
+                  </td>
+                </tr>
+              </table>
+</div>
+</div>
+
+{% endblock %}

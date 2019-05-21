@@ -1,0 +1,120 @@
+
+div.breadcrumbs {
+    background: #175617;
+}
+body{
+background: #dbfddb
+}
+.dashboard #content{
+    /* width: 60% !important */
+}
+#user-tools, #user-tools a:visited, #user-tools a:link, #user-tools strong, #branding h1 a:visited {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#changelist-filter h2 {
+    background: #175617;
+}
+
+.object-tools a:link, .object-tools a:visited, #changelist #toolbar form input[type="submit"], #changelist .actions .button {
+    background-color: #175617;
+    color: white;
+}
+
+thead th, thead th a:link, thead th a:link, thead th a:visited {
+    background-color: #175617;
+    color: white;
+}
+
+thead th:hover, thead th a:link:hover, thead th a:link:hover, thead th a:visited:hover {
+    background-color: white;
+    color: #175617;
+    border: 2px solid #175617;
+    font-weight: bold;
+}
+
+th .sortoptions .clear {
+    background-color: #175617;
+    color: white;
+}
+
+thead th.sorted .text {
+    padding-right: 0;
+}
+
+.paginator a:link, .paginator a:visited, .paginator a:focus {
+    background-color: #175617;
+    color: white;
+}
+
+.paginator a:hover {
+    background-color: white;
+    color: #175617;
+}
+
+.paginator .this-page {
+    background-color: lightblue;
+}
+
+#changelist #toolbar form #searchbar {
+    padding: 0;
+    height: 40px;
+    vertical-align: central;
+}
+
+#changelist #toolbar form input[type="submit"] {
+    width: 100px;
+    height: 40px;
+    vertical-align: central;
+}
+
+.submit-row input, .submit-row input.default {
+    background-color: #175617;
+    color: white;
+}
+
+.module h2, fieldset.collapsed h2 ,fieldset.collapsed a:link{
+    background-color: #175617;
+    color: white;
+    width: 100px;
+    border-radius: 3px;
+}
+
+
+
+.submit-row input:hover, .submit-row input.default:hover {
+    background-color: white;
+    color: #175617;
+    border: 2px solid #175617;
+    font-weight: bold;
+}
+
+label {
+    color: black;
+    font-size : 22px !important;
+
+}
+
+div .breadcrumbs {
+    background: #175617;
+}
+
+#changelist-filter li.selected a {
+    color: #175617;
+    font-weight: bolder;
+}
+
+/* DASHBOARD */
+
+#recent-actions-module{
+    float: right;
+}
+.dashboard .module table th {
+    width: 100%;
+}
+.dashboard caption {
+    width: 100%;
+    background: #175617;
+}

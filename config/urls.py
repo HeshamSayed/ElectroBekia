@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include,re_path
 from .view import *
 from django.conf.urls import url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -26,6 +26,7 @@ admin.site = AdminSitePlus()
 admin.autodiscover()
 
 urlpatterns = [
+  re_path(r'admin/$', admin.site.index , {'extra_context': {'foo':"Dsadas"}}),
   path('admin/', admin.site.urls),
   path('', index, name='base'),
   path('accounts/', include('accounts.urls', namespace='accounts')),
@@ -33,4 +34,5 @@ urlpatterns = [
   path('products/', include('products.urls', namespace='products')),
   path('cart/', include('cart.urls', namespace='cart')),
   path('orders/', include('orders.urls', namespace='orders')),
+  path('api/', include('electroapi.urls', namespace='electroapi')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + staticfiles_urlpatterns()
