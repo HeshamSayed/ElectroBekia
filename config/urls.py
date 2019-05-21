@@ -21,12 +21,13 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
 from adminplus.sites import AdminSitePlus
-from .view import get_extra_context
+from .view import *
 admin.site = AdminSitePlus()
 admin.autodiscover()
 
 urlpatterns = [
-  path('admin/', admin.site.urls,{'extra_context': get_extra_context()}),
+  path('', index, name='base'),
+  path('admin/', admin.site.urls, {'extra_context': get_extra_context()}),
   path('accounts/', include('accounts.urls', namespace='accounts')),
   url(r'^oauth/', include('social_django.urls', namespace='social')),
   path('', index, name='base'),

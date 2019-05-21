@@ -130,14 +130,11 @@ body {
   }
 }
 
-
 /* .nav li{
     float: left;
 
     
 }
-
-
 
 .navbar-nav li{
     
@@ -727,3 +724,37 @@ body {
       font-weight: 700
   }
 /* end anmin nav */
+
+
+/* start productDetails*/
+
+.prods-details{
+
+}
+
+.backDetails{
+    background-color: #00803e;
+    color: white
+}
+
+
+.mt-proDetails{
+
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #00803e;
+
+
+}
+
+.proImage img{
+    width: 100%;
+}
+
+.bt-co
+{
+    background-color: #00803e;
+}
+
+
+/* end Product Details*/

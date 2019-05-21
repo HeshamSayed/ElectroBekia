@@ -66,7 +66,6 @@ class UserAdmin(admin.ModelAdmin):
         js = ('js/admin/script.js',)
 
 
-
 class CityAdmin(admin.ModelAdmin):
     list_display = ['name', 'governorate']
 
