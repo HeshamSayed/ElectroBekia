@@ -1,6 +1,4 @@
-{% extends 'orders/admin/_admin_base.html' %} {% block content %} 
-{% load order_filter %}
-
+{% extends 'orders/admin/_admin_base.html' %} {% block content %} {% load order_filter %}
 
 <div class="container-fluid outer">
   <div class="row text-right inner ">
@@ -12,11 +10,11 @@
           <table class="table table-hover text-center info">
             <tr>
               <td>{{ order.0.id|to_ar }}</td>
-              <td> رقم الطلب</td>
+              <td>رقم الطلب</td>
             </tr>
             <tr>
               <td>{{ order.0.first_name }} {{ order.0.last_name }}</td>
-              <td> اسم المستخدم</td>
+              <td>اسم المستخدم</td>
             </tr>
             <tr>
               <td>{{ order.0.created }}</td>
@@ -32,7 +30,9 @@
             </tr>
             <tr>
               <td colspan="2">
-              <button class="see btn btn-success">مشاهدة الطلب</button>  
+                <a href="/admin/orders/order/{{ order_type }}/{{ order.0.id }}">
+                  <button class="see btn btn-success">مشاهدة الطلب</button>
+                </a>
               </td>
             </tr>
           </table>
@@ -40,7 +40,9 @@
       </div>
     </div>
     {%endfor%} {%else%}
-    <p class="center-div">لا يوجد طلبات</p>
+    <div class="text-center">
+      <p class="center-div">لا يوجد طلبات</p>
+    </div>
     {%endif%}
   </div>
 </div>

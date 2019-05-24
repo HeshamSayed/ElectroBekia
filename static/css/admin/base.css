@@ -802,12 +802,11 @@ a.deletelink:hover {
 
 .object-tools a:link,
 .object-tools a:visited {
-  display: block;
+  display: inline-block;
   float: left;
-  padding: 3px 12px;
-  background: #999;
-  font-weight: 400;
-  font-size: 11px;
+  background: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #fff;

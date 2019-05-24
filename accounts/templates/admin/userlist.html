@@ -15,20 +15,18 @@
     {% if cl.has_filters %}
         <div id="changelist-filter">
 
-            <h2>Filter</h2>
-
-            <h3 class="selected"> By user category </h3>
+            <h3 class="selected"> تصفية بحسب نوع المستخدم</h3>
             <ul>
 
                 <li
-                        {% if request.get_full_path == '/admin/accounts/user/?o=3' %}
+                        {% if request.get_full_path == '/admin/accounts/user/?o=3' or request.get_full_path == '/admin/accounts/user/' %}
                             class="selected"
 
                         {% endif %}
                 >
                     <a href="?o=3" title="All"
 
-                    >الحميع</a></li>
+                    >الجميع</a></li>
 
                 <li
                         {% if request.get_full_path == '/admin/accounts/user/?o=3&user_category__exact=1' %}

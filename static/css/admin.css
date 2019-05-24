@@ -20,7 +20,7 @@ html {
   box-sizing: border-box; /* required if you're using padding */
 }
 .center-div{
-    margin-top: 18%;
+    margin : 17% 0;
     font-size : 40px;
     color:rgb(6, 56, 6);
 }
@@ -35,4 +35,27 @@ html {
   width: 80%;
   font-size: 23px;
   color: rgb(0, 54, 21);
+}
+
+.middle_t{
+width: 250px !important;
+}
+
+#orderHeader{
+  padding : 1%;
+  background: #91e991;
+  border-radius: 25px;
+}
+#order_info{
+  font-size:24px;
+  font-weight: 700;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: rgb(115, 207, 137);
+}
+
+.orderItem{
+  margin: 2% 0;
+  background-color: #c7f5c7;
+  border-radius: 25px;
 }

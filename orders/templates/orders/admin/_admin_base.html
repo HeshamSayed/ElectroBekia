@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/admin.css' %}"/>
-  <link rel="stylesheet" href="{% static 'css/hover.css' %}"/>
-  <link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+
+
   <!--including Design libs-->
 
   {% block style %}
@@ -93,12 +93,12 @@
   </nav>
 </div>
 <!--including js libs-->
+{% block js %}
+{% endblock js %}
 <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/plugins.js' %}"></script>
-<script src="{% static 'js/wow.min.js' %}"></script>
 <script>
-  new WOW().init();
   $(function(){
     $('.link').each(function(){
         if ($(this).prop('href') == window.location.href.split('?')[0]) {
