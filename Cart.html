@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <meta name="viewport" content="width=device-width,intial-scale=1" />
-    <title>العربه</title>
-    <link href="https://fonts.googleapis.com/css?family=Mada&display=swap" rel="stylesheet">
-    <!--including Design libs-->
-    <link href="https://fonts.googleapis.com/css?family=Mada|Markazi+Text&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/hover.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-    <!--[if lt IE 9]>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+   <meta name="viewport" content="width=device-width,intial-scale=1" />
+   <title>العربه</title>
+   <link href="https://fonts.googleapis.com/css?family=Mada&display=swap" rel="stylesheet">
+   <!--including Design libs-->
+   <link href="https://fonts.googleapis.com/css?family=Mada|Markazi+Text&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/bootstrap.css" />
+   <link rel="stylesheet" href="css/font-awesome.min.css" />
+   <link rel="stylesheet" href="css/style.css" />
+   <link rel="stylesheet" href="css/hover.css" />
+   <link rel="stylesheet" href="css/animate.css" />
+   <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -21,59 +22,69 @@
 
 <body>
 
-  <section class=" text-center">
-    <div class="container">
-      <div class="row mycart">
-          <div class="col-lg-12">
-             <div class="col-lg-3 cartImg col-lg-push-9">
-                <h3 class="cartTitle">الصوره</h3>
-                <img src="images/pc.png"  />
-             </div>
-             <div class="col-lg-2 cartImg col-lg-push-4">
-                <h3 class="cartTitle">اسم المنتج</h3>
-                <h4>كمبيوتر</h4>
-                
-             </div>
-             <div class="col-lg-2 cartImg">
-                <h3 class="cartTitle">الكميه</h3>
-                <input type="number" value="1" style="width:75%; margin-bottom: 5%;" />
-                <button class="btn btn-success">تحديث الكميه</button>
-                
-             </div>
-             <div class="col-lg-2 cartImg col-lg-pull-7">
-                <h3 class="cartTitle">سعر الوحده</h3>
-                <h4>من 50ج الى 100ج</h4>
-             </div>
-             <div class="col-lg-3  col-lg-pull-7 ">
-                <h3 class="cartTitle">ازل من العربه </h3>
-                <button class="btn btn-danger" style="width:50%;">ازاله من العربه</button>
-                
-             </div>
-          </div>
-      </div>
-      <div class="row">
-        
-          <div class="col-lg-4 doneBtn">
-              <button class="btn btn-success" style="width:50%;">بيع</button>
-              <button class="btn btn-success" style="width:50%">اضف مزيد من المنتجات</button> 
+   <section class=" text-center">
+      <div class="container">
+         <div class="row mycart">
+            <div class="col-lg-12">
+               <div class="col-lg-3 cartImg col-lg-push-9">
+                  <h3 class="cartTitle">وصف المنتج</h3>
+                  <textarea>
+                    إشترى ووفر مع سوق.كوم! موقع سوق.كوم هو "أمازون الشرق الأوسط" إشترى ووفر مع سوق.كوم! "أمازون الشرق الأوسط"
+
+
+                </textarea>
+               </div>
+               <div class="col-lg-2 cartImg col-lg-push-4">
+                  <h3 class="cartTitle">اسم المنتج</h3>
+                  <h4>كمبيوتر</h4>
+
+               </div>
+               <div class="col-lg-2 cartImg">
+                  <h3 class="cartTitle">الكميه</h3>
+                  <input type="number" value="1" style="width:75%; margin-bottom: 5%;" />
+
+
+               </div>
+               <div class="col-lg-2 cartImg col-lg-pull-7">
+                  <h3 class="cartTitle">سعر الوحده</h3>
+                  <h4>من 50ج الى 100ج</h4>
+                  <h3 class="cartTitle">رفع صور المنتج</h3>
+                  <button style="color: white;"
+                     onclick="document.getElementById('getFile').click()">اضغط لرفع الصور</button>
+                  <input type='file' id="getFile" style="display:none">
+
+
+               </div>
+               <div class="col-lg-3  col-lg-pull-7 ">
+                  <h3 class="cartTitle">ازل من العربه </h3>
+                  <button class="btn btn-danger" style="width:50%;margin-bottom: 1%;">ازاله من العربه</button>
+
+               </div>
+            </div>
+         </div>
+         <div class="row">
+
+            <div class="col-lg-4 doneBtn">
+               <button class="btn btn-success" style="width:50%;">بيع</button>
+               <button class="btn btn-success" style="width:50%">اضف مزيد من المنتجات</button>
             </div>
 
+         </div>
+
+
       </div>
 
-
-    </div>
-
-  </section>
+   </section>
 
 
-<!--including js libs-->
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/wow.min.js"></script>
-<script>
-  new WOW().init();
-</script>
+   <!--including js libs-->
+   <script src="js/jquery-3.4.1.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/plugins.js"></script>
+   <script src="js/wow.min.js"></script>
+   <script>
+      new WOW().init();
+   </script>
 </body>
 
 </html>
