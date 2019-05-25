@@ -803,9 +803,16 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #3c763d;
     margin-bottom: 2%;
 }
 
-.confirmation button{
+.confirmation .yes{
     width: 30%;
     margin-bottom: 2%;
+    background-color: #00803e;
+}
+
+.confirmation .no{
+    width: 30%;
+    margin-bottom: 2%;
+    background-color: #d9534f;
 }
 
 
