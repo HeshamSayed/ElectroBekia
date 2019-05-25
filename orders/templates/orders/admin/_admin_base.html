@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Mada|Markazi+Text&display=swap" rel="stylesheet">
   <title>ElectroBekia</title>
   <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Markazi+Text&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
@@ -32,22 +33,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="navbar-brand">
-          <img src="{% static 'images/logo.png' %}" style="height:49px"/></div>
+        <div class="navbar-brand" >
+          <img src="{% static 'images/logo.png' %}" style="height:49px ;margin-right:600px;"/></div>
       </div>
   
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="{% url 'admin:index' %}"> لوحة التحكم الرئيسية <span class="sr-only">(current)</span></a></li>
-          {%if new_orders%}
-          <li><a class = "link"  href="{% url 'admin:index' %}new-orders"> <span style="font-family: 'Cairo', sans-serif;font-size:16px;font-weight:700;color:#7a0000"> ( {{ new_orders|to_ar }} )&nbsp;&nbsp;</span> الطلبات الجديدة   </a></li>
-          {%else%}
-          <li><a class = "link"  href="{% url 'admin:index' %}new-orders">الطلبات الجديدة</a></li>
-          {%endif%}
-
-            <li><a  class = "link"  href="{% url 'admin:index' %}waiting-orders">الطلبات قيد الانتظار </a></li>
-            <li><a  class = "link"  href="{% url 'admin:index' %}old-orders">الطلبات المنتهية </a></li>
+          <li><a class = "link"  href="{% url 'admin:index' %}new-orders"> <span style="font-family: 'Cairo', sans-serif;font-size:16px;font-weight:700;color:#ce0505"> {{ 'new_orders'|get_data|to_ar }}    &nbsp;&nbsp;</span> طلبات جديدة   </a></li>
+          <li><a class = "link"  href="{% url 'admin:index' %}waiting-orders"> <span style="font-family: 'Cairo', sans-serif;font-size:16px;font-weight:700;color:#df9b1c"> {{ 'waiting_orders'|get_data|to_ar }} &nbsp;&nbsp;</span> طلبات قيد الانتظار   </a></li>
+          <li><a class = "link"  href="{% url 'admin:index' %}old-orders"> <span style="font-family: 'Cairo', sans-serif;font-size:16px;font-weight:700;color:#099b10">{{ 'old_orders'|get_data|to_ar }}&nbsp;&nbsp;</span> طلبات تم الرد عليها  </a></li>
+          <li><a class = "link"  href="{% url 'admin:index' %}done-orders">طلبات قديمة</a></li>
         </ul>
         <ul class="nav navbar-nav ">
             {% if request.user.is_authenticated %}
@@ -101,7 +98,10 @@
 <script>
   $(function(){
     $('.link').each(function(){
-        if ($(this).prop('href') == window.location.href.split('?')[0]) {
+        const cutLink = $(this).prop('href').split('/')
+        const linkType = cutLink[cutLink.length-1]
+        const currentLocationList = window.location.href.split('/')
+         if ( currentLocationList.includes(linkType)) {
             $(this).addClass('active_nav')
         }
     });

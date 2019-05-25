@@ -27,3 +27,6 @@ class OrderCreateForm(forms.ModelForm):
   class Meta:
     model = Order
     fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'city']
+
+class DeterminePriceForm(forms.Form):
+  price = forms.FloatField(help_text="من فضلك أدخل رقم صحيح")
