@@ -8,7 +8,7 @@ from rest_framework.views import status
 
 class ListCategoryView(generics.ListAPIView):
     """
-    Provides a get method handler.
+    Provides a get, post method handler.
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer

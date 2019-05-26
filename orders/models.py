@@ -23,6 +23,8 @@ class Order(models.Model):
 
   created = models.DateTimeField(auto_now_add=True)
   updated = models.DateTimeField(auto_now=True)
+
+  #1 in review 2 repleyed with price 3 accepted
   order_status = models.PositiveIntegerField(default=1)
 
   class Meta:
