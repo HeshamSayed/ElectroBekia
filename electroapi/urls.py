@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ListCategoryView, CategoryDetailView, ListProductView, ProductDetailView,\
-    ListOrderView, OrderDetailView, LoginView
+    ListOrderView, OrderDetailView, LoginView, RegisterUserView
 app_name = 'electroapi'
 
 urlpatterns = [
@@ -22,5 +22,10 @@ urlpatterns = [
     # /api/orders/id/ delete,update,get order
     path('orders/<int:pk>/', OrderDetailView.as_view(), name="category_details"),
 
-    path('auth/login/', LoginView.as_view(), name="auth-login")
+    # /api/login/ to login user and recieve token
+    path('login/', LoginView.as_view(), name="auth-login"),
+
+    # /api/login/ to register user
+    path('register/', RegisterUserView.as_view(), name="auth-register")
+
 ]

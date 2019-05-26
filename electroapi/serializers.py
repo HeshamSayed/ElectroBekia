@@ -32,4 +32,5 @@ class TokenSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("email",)
+        fields = ("email","first_name","last_name","user_category","phone","city","date_of_birth")
+
