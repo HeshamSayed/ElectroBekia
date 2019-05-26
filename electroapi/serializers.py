@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from products.models import Category, Product
 from orders.models import Order
+from accounts.models import User
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -19,3 +20,16 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ("id", "first_name", "last_name", "email", "phone", "address",
                   "city", "user", "created", "updated", "order_status", "get_total_cost")
+
+
+class TokenSerializer(serializers.Serializer):
+    """
+    This serializer serializes the token data
+    """
+    token = serializers.CharField(max_length=255)
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("email",)

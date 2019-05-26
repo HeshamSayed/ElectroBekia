@@ -8,3 +8,5 @@ from .Category import ListCategoryView, CategoryDetailView
 from .Product import ListProductView, ProductDetailView
 
 from .Order import ListOrderView, OrderDetailView
+
+from .Login import LoginView

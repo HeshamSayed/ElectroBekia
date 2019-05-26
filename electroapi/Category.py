@@ -4,6 +4,7 @@ from .serializers import CategorySerializer
 from .decorators import validate_request_data
 from rest_framework.response import Response
 from rest_framework.views import status
+from rest_framework import permissions
 
 
 class ListCategoryView(generics.ListAPIView):
@@ -12,6 +13,7 @@ class ListCategoryView(generics.ListAPIView):
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (permissions.IsAuthenticated,)
 
     @validate_request_data
     def post(self, request, *args, **kwargs):
