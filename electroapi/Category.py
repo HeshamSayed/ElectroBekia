@@ -1,21 +1,22 @@
 from rest_framework import generics
 from products.models import Category
 from .serializers import CategorySerializer
-from .decorators import validate_request_data
 from rest_framework.response import Response
 from rest_framework.views import status
 from rest_framework import permissions
+
+from .CustomPermission import IsGetOrIsAdmin
+
 
 
 class ListCategoryView(generics.ListAPIView):
     """
     Provides a get, post method handler.
     """
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin )
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
-    @validate_request_data
     def post(self, request, *args, **kwargs):
         a_category = Category.objects.create(
             name=request.data["name"],
@@ -34,6 +35,7 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin)
 
     def get(self, request, *args, **kwargs):
         try:
@@ -47,7 +49,6 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-    @validate_request_data
     def put(self, request, *args, **kwargs):
         try:
             a_category = self.queryset.get(pk=kwargs["pk"])
