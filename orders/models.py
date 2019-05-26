@@ -3,7 +3,7 @@ from products.models import Product
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from accounts.models import City, User
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator , MinLengthValidator
 import uuid
 import os
 
@@ -29,7 +29,7 @@ class Order(models.Model):
     ordering = ('-created',)
 
   def __str__(self):
-    return "طلب " + self.first_name + " " + self.last_name
+    return str(self.id) + " - " + "طلب " + self.first_name + " " + self.last_name
 
   def get_total_cost(self):
     return sum(item.get_cost() for item in self.items.all())
@@ -38,8 +38,9 @@ class Order(models.Model):
 class OrderItem(models.Model):
   order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
   product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE)
+  description = models.TextField( max_length = 500 , validators=[MinLengthValidator(50)])
   price = models.FloatField(
-    validators=[MinValueValidator(0.0), MaxValueValidator(1000000)],
+    validators=[MinValueValidator(0.0), MaxValueValidator(1000000)]
   )
   quantity = models.PositiveIntegerField(default=1)
   @property
@@ -47,7 +48,7 @@ class OrderItem(models.Model):
       # 10% taxes
       return self.price * self.quantity
   def __str__(self):
-    return str(self.product)
+    return "Order : "+str(self.order.id) + "-" + str(self.product)
 
   def get_cost(self):
     return self.price * self.quantity
@@ -56,9 +57,9 @@ def get_file_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join('orders/', filename)
-class OrderImage(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    img = models.ImageField(upload_to=get_file_path)
 
+class OrderImage(models.Model):
+    item = models.ForeignKey(OrderItem, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to=get_file_path)
     def __str__(self):
-        return self.Order.id
+        return "order : " + str(self.item.order.id) + " - item : " + str(self.item.id) 

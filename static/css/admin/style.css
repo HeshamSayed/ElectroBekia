@@ -29,9 +29,9 @@ thead th, thead th a:link, thead th a:link, thead th a:visited {
 }
 
 thead th:hover, thead th a:link:hover, thead th a:link:hover, thead th a:visited:hover {
-    background-color: #e2e7e9;
+    background-color: #3f7e34;
     color: #008032;
-    border: 2px solid #008032;
+    border: 1px solid #008032;
     font-weight: bold;
 }
 
@@ -100,7 +100,12 @@ label {
 div .breadcrumbs {
     background: #008032;
 }
-
+#changelist-filter li{
+margin-top: 15px;
+}
+#changelist-filter h3{
+    font-size: 20px;
+}
 #changelist-filter li.selected a,#changelist-filter li.selected a:hover {
     color: #008032;
     font-weight: bold;
@@ -121,4 +126,37 @@ div .breadcrumbs {
 .dashboard caption {
     width: 100%;
     background: #539253;
+}
+
+.submit-row a.deletelink {
+    display: block;
+    background: #ba2121;
+    border-radius: 4px;
+    padding: 20px 15px;
+    height: 20px;
+    line-height: 0px;
+    color: #fff;
+}
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+    font-size: 16px;
+    color: rgb(51, 51, 51);
+}
+.timezonewarning {
+    font-size: 17px;
+    color: rgb(53, 53, 53);
+}
+
+fieldset .fieldBox {
+    float: left;
+    margin-right: 20px;
+    width: 45%;
+}
+
+div.breadcrumbs {
+    /* background: #79aec8; */
+    padding: 10px 40px;
+    border: none;
+    font-size: 21px;
+    color: #c4dce8;
+    text-align: left;
 }

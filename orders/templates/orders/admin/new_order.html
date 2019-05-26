@@ -1,0 +1,128 @@
+{% extends 'orders/admin/_admin_base.html' %} {% load static %} {% load order_filter %} {%block style%}
+<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet" />
+{%endblock%} {% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-1"></div>
+
+    <div id="orderHeader" class="col-md-10 text-center">
+      <div id="order_info"><p>تفاصيل الطلب</p></div>
+      <table class="table table-hover text-right info">
+        <tr>
+          <td>{{ order.created }}</td>
+          <td>تاريخ الطلب</td>
+          <td class="middle_t"></td>
+          <td>{{ order.id | to_ar }}</td>
+          <td>رقم الطلب</td>
+        </tr>
+        <tr>
+          <td>{{ order.city }}</td>
+          <td>البلد</td>
+          <td class="middle_t"></td>
+
+          <td>{{ order.first_name }} {{ order.last_name }}</td>
+          <td>اسم المستخدم</td>
+        </tr>
+        <tr>
+          <td style="font-family: 'Cairo', sans-serif;">{{ count | to_ar }}</td>
+          <td>عدد الأصناف</td>
+          <td class="middle_t"></td>
+
+          <td>{{ user_type }}</td>
+          <td>نوع المستخدم</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+<div class="container text-center">
+  <h2>الأصناف المباعة</h2>
+  <div class="row justify-content-center" style="height:50px;">
+    <div class="col-md-1"></div>
+    <div class="alert-danger col-md-10" style="color: red; line-height: 50px">{{ err }}</div>
+    <div class="col-md-1"></div>
+  </div>
+  {%for order_item in orders%}
+  <div class="row  justify-content-center">
+    <div class="col-md-1"></div>
+    <div class=" orderItem col-md-10">
+      <table class="table text-right info">
+        <tr>
+          <td colspan="2" style="width:40%;">
+            الصنف &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ order_item.product }}
+          </td>
+          <td colspan="2" style="width:40%;">
+             الكمية &nbsp;&nbsp;  :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ order_item.quantity|to_ar }} 
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            الوصف &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ order_item.description }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" style="width:80%;">
+            <div class="aniimated-thumbnials">
+              {%for url in order_item.images%}
+              <a href="{{ url }}">
+                <img width="100" height="100" src="{{ url }}" />
+              </a>
+              {%endfor%}
+            </div>
+          </td>
+          <td style="width:10%;">: صور السلعة</td>
+        </tr>
+        <tr>
+          <td style="font-family: 'Cairo', sans-serif;width:20%;">{{ order_item.price | to_ar }}</td>
+          <td style="width:12%;">: &nbsp; السعر الحالي</td>
+          <td  style="width:40%;">
+            <form method="POST" action="{% url 'admin:update_price' order_item.id%}" class="form-inline">
+              {% csrf_token %}
+              <input type="hidden" name="order_id" value="{{ order.id }}" />
+              <button class="btn btn-success" style="font-size:19px;">تحديد السعر</button>
+              {% for field in form %}
+              {{ field }}
+              {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+              {% endfor %} {% endfor %}
+            </form>
+          </td>
+          <td style="width:10%;">: السعر</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  {%endfor%}
+  <div class="row justify-content-center">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form method="POST" action="{% url 'admin:send_price' order.id%}">
+            {% csrf_token %}
+            <button class="btn btn-danger btn-block" style="font-size:19px;">ارسال الأسعار</button>
+          </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+{%endblock%} {%block js%}
+<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+<script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+<script src="{%static 'js/lg-thumbnail.min.js'%}"></script>
+<script>
+  let galleries = [...document.getElementsByClassName("aniimated-thumbnials")];
+  galleries.forEach(g => {
+    console.log(g);
+    lightGallery(g, {
+      thumbnail: true
+    });
+  });
+</script>
+
+{%endblock%}

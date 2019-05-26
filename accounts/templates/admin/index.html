@@ -69,23 +69,27 @@
         <div style="padding:0 10%">
         <table id="stats" class="table table-hover text-right">
                 <tr>
-                        <td style="font-family: 'Cairo', sans-serif;">{{ total_users|to_ar }}</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ 'total_users'|get_data|to_ar }}</td>
                         <td>عدد المستخدمين</td>
                 </tr>
                 <tr>
-                        <td style="font-family: 'Cairo', sans-serif;">{{ new_orders|to_ar }}</td>
-                        <td> الطلبات الجديدة</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ 'new_orders'|get_data|to_ar }}</td>
+                        <td> طلبات جديدة</td>
                 </tr>
                 <tr>
-                        <td style="font-family: 'Cairo', sans-serif;">{{ waiting_orders|to_ar }}</td>
-                        <td>الطلبات قيد الانتظار </td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ 'waiting_orders'|get_data|to_ar }}</td>
+                        <td>طلبات قيد الانتظار </td>
                 </tr>
                 <tr>
-                        <td style="font-family: 'Cairo', sans-serif;">{{ old_orders|to_ar }}</td>
-                        <td>الطلبات المنتهية</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ 'old_orders'|get_data|to_ar }}</td>
+                        <td>طلبات تم الرد عليها</td>
                 </tr>
                 <tr>
-                  <td style="font-family: 'Cairo', sans-serif;">{{ all_orders|to_ar }}</td>
+                        <td style="font-family: 'Cairo', sans-serif;">{{ 'done_orders'|get_data|to_ar }}</td>
+                        <td>طلبات قديمة</td>
+                </tr>
+                <tr>
+                  <td style="font-family: 'Cairo', sans-serif;">{{ 'all_orders'|get_data|to_ar }}</td>
                   <td>مجموع الطلبات</td>
                 </tr>
               </table>
