@@ -5,14 +5,19 @@ from cart.cart import Cart
 from .models import *
 
 
-
 @login_required
 def order_create(request):
   cart = Cart(request)
   if request.method == 'POST':
     form = OrderCreateForm(request.POST)
-    if form.is_valid():
-      order = form.save(commit=False)
+    if form:
+      order = Order()
+      order.first_name = form['first_name'].value()
+      order.last_name = form['last_name'].value()
+      order.email = form['email'].value()
+      order.phone = form['phone'].value()
+      order.address = form['address'].value()
+      order.city_id = int(form['city'].value())
       order.user = request.user
       order.save()
       for item in cart:
@@ -22,6 +27,10 @@ def order_create(request):
           price=item['price'],
           quantity=item['quantity']
         )
+      if request.FILES['Images']:
+        for i in request.FILES.getlist('Images'):
+          picture = OrderImage(order=order, img=i)
+          picture.save()
       cart.clear()
     return redirect('orders:order_detail', pk=order.id)
   else:
@@ -50,4 +59,3 @@ def order_detail(request, pk):
     print(item.product)
 
   return render(request, 'orders/detail.html', context)
-

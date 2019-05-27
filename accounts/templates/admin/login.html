@@ -9,9 +9,11 @@
 
 {% block usertools %}{% endblock %}
 
-{% block nav-global %}{% endblock %}
+{% block nav-global %}
+{% endblock %}
 
-{% block content_title %}{% endblock %}
+{% block content_title %}
+{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
@@ -32,6 +34,9 @@
 {% endif %}
 
 <div id="content-main">
+<div class="text-center">
+    <h1>لوحة التحكم</h1>
+    <img src="{% static 'images/logo.png' %}" style="height:49px"/></div>
 
 {% if user.is_authenticated %}
 <p class="errornote">
@@ -41,8 +46,8 @@
 {% endblocktrans %}
 </p>
 {% endif %}
-
 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+  
   <div class="form-row">
 
     {{ form.username.errors }}

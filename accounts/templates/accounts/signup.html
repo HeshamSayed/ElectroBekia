@@ -20,13 +20,18 @@
                       <p style="color: red;">{{ form.err }}</p>
                     {% endif %}
                     {% csrf_token %}
-
+                    <div class="col-lg-12">
+                      <div class="alert alert-success" role="alert">
+                        انتبه هذه العلامه <span style="color: red;font-size: 25px; margin-left: 0.6rem">*</span> تدل على
+                        ان حقل الادخال مطلوب
+                      </div>
+                    </div>
                     {% for field in form %}
                       <div class="col-lg-1">
                         <span style="color: red;font-size: 25px; margin-left: 0.6rem">*</span>
                       </div>
                       {% if field.name == 'date_of_birth' %}
-                        <div class="col-lg-7">
+                        <div class="col-lg-6">
                           <div class="form-group">
                             {{ field }}
                             {% if field.help_text %}
@@ -40,12 +45,12 @@
                         <div class="col-lg-4" style="padding-left: 0">
                           <div class="form-group">
                             <label class="form-control input-lg text-right"
-                                   style="font-weight: normal;"
+                                   style="font-weight: normal;padding: 10px;"
                                    for="id_date_of_birth">تاريخ الميلاد</label>
                           </div>
                         </div>
                       {% else %}
-                        <div class="col-lg-11">
+                        <div class="col-lg-10">
                           <div class="form-group">
                             {{ field }}
                             {% if field.help_text %}
@@ -80,8 +85,5 @@
   </script>
 {% endblock content %}
 {#----------------------------------------------------------#}
-
-
-
 
 
