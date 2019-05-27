@@ -59,6 +59,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     points = models.PositiveIntegerField(default=0)
+
+    # 1 user 2 center
     user_category = models.BooleanField(default=1)
 
     phone_regex = RegexValidator(regex=r'^01[1|0|2|5][0-9]{8}$',

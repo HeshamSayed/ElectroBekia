@@ -1,15 +1,17 @@
 from rest_framework import generics
 from products.models import Product, Category
 from .serializers import ProductSerializer
-# from .decorators import validate_request_data
 from rest_framework.response import Response
 from rest_framework.views import status
+from .CustomPermission import IsGetOrIsAdmin
+from rest_framework import permissions
 
 
 class ListProductView(generics.ListAPIView):
     """
     /api/categories/2/products/
     """
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin)
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -53,6 +55,7 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     PUT categories/:fk/products/:id/
     DELETE categories/:fk/products/:id/
     """
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin)
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 

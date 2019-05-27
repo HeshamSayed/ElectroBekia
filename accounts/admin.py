@@ -7,7 +7,7 @@ admin.site.site_header = ' '
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['full_name', 'email', 'points',
+    list_display = ['full_name', 'email', 'points',"password",
                     'city', 'User_Category', 'phone']
     list_display_links = [('full_name')]
 
