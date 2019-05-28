@@ -5,6 +5,7 @@
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Mada|Markazi+Text&display=swap" rel="stylesheet">
   <title>ElectroBekia</title>
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
@@ -24,7 +25,8 @@
 {% endblock content %}
 
 {% include "base/_footer.html" %}
-
+{%block js%}
+{%endblock js%}
 <!--including js libs-->
 <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>

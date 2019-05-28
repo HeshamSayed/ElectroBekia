@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from accounts.models import City, User
 from django.core.validators import MaxValueValidator, MinValueValidator , MinLengthValidator
 import uuid
+from enum import Enum
 import os
 
 class Order(models.Model):
@@ -17,6 +18,7 @@ class Order(models.Model):
                            blank=True, null=True,
                            help_text=_('من فضلك ادخل رقم موبايل صحيح'))
   address = models.CharField(max_length=150, blank=True, null=True)
+  description = models.TextField(blank=True, null=True)
 
   city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -37,31 +39,40 @@ class Order(models.Model):
     return sum(item.get_cost() for item in self.items.all())
 
 
+
+
+
 class OrderItem(models.Model):
   order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
   product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE)
-  description = models.TextField( max_length = 500 , validators=[MinLengthValidator(50)])
-  price = models.FloatField(
-    validators=[MinValueValidator(0.0), MaxValueValidator(1000000)]
+  price = models.FloatField(null=True, blank=True,
+    validators=[MinValueValidator(0.0), MaxValueValidator(1000000)],
+    
   )
   quantity = models.PositiveIntegerField(default=1)
-  @property
-  def total(self):
-      # 10% taxes
-      return self.price * self.quantity
+  ITEM_STATUS_CHOICES = (
+    ('r' , "تم رفض اللسعر"),
+    ('a' , "تم قبول السعر")
+  )
+  status = models.CharField(
+    choices=ITEM_STATUS_CHOICES,
+    max_length=5,
+    null=True,
+    blank=True
+    )
   def __str__(self):
     return "Order : "+str(self.order.id) + "-" + str(self.product)
 
-  def get_cost(self):
-    return self.price * self.quantity
 
 def get_file_path(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = "%s.%s" % (uuid.uuid4(), ext)
-    return os.path.join('orders/', filename)
+  ext = filename.split('.')[-1]
+  filename = "%s.%s" % (uuid.uuid4(), ext)
+  return os.path.join('orders/', filename)
+
 
 class OrderImage(models.Model):
-    item = models.ForeignKey(OrderItem, on_delete=models.CASCADE)
-    img = models.ImageField(upload_to=get_file_path)
-    def __str__(self):
-        return "order : " + str(self.item.order.id) + " - item : " + str(self.item.id) 
+  order = models.ForeignKey(Order, on_delete=models.CASCADE)
+  img = models.ImageField(upload_to='orders/%Y/%m/%d', blank=True)
+
+  def __str__(self):
+    return str(self.order.id)

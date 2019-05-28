@@ -70,13 +70,19 @@ class OrderAdmin(admin.ModelAdmin):
     def get_order_items_info(self, order_items):
         info = []
         for item in order_items:
+            status = item.status
+            if status =='r' :
+                item_status = 0
+            elif status == 'a' :
+                item_status = 1
+            else : 
+                item_status = -1
             info.append({
-                "images": [order_img.img.url for order_img in item.orderimage_set.all()] if item.orderimage_set else ["لا توجد صور"],
                 "product": item.product.name,
                 "quantity": item.quantity,
-                "description": item.description or "لا يوجد وصف",
                 "id": item.id,
                 "price": item.price or 0,
+                "status": item_status
             })
         return info
 
@@ -88,7 +94,11 @@ class OrderAdmin(admin.ModelAdmin):
         order_items = paginator.get_page(page)
         order_items_info = self.get_order_items_info(order_items)
         user_type = "مستخدم عادي" if order.user.user_category else "مركز صيانة"
+        images = [order_img.img.url for order_img in order.orderimage_set.all()] if order.orderimage_set else ["لا توجد صور"],
+        description=order.description
         return {
+            "images":list(images)[0],
+            "description":description or "لا يوجد وصف",
             "user_type": user_type,
             "order": order,
             "count": order.count,
@@ -121,7 +131,7 @@ class OrderAdmin(admin.ModelAdmin):
         items = OrderItem.objects.filter(order_id=id)
         missed_item = ''
         for item in items:
-            if item.price == 0.0:
+            if item.price == 0.0 or not item.price:
                 missed_item += "  "+str(item.product) + " - "
         if missed_item:
             return redirect('/admin/orders/order/new-orders/'+str(id)+'?item='+missed_item+'/')

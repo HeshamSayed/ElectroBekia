@@ -6,33 +6,55 @@
     <div class="col-md-1"></div>
 
     <div id="orderHeader" class="col-md-10 text-center">
-      <div id="order_info"><p>تفاصيل الطلب</p></div>
-      <table class="table table-hover text-right info">
-        <tr>
-          <td>{{ order.created }}</td>
-          <td>تاريخ الطلب</td>
-          <td class="middle_t"></td>
-          <td>{{ order.id | to_ar }}</td>
-          <td>رقم الطلب</td>
-        </tr>
-        <tr>
-          <td>{{ order.city }}</td>
-          <td>البلد</td>
-          <td class="middle_t"></td>
-
-          <td>{{ order.first_name }} {{ order.last_name }}</td>
-          <td>اسم المستخدم</td>
-        </tr>
-        <tr>
-          <td style="font-family: 'Cairo', sans-serif;">{{ count | to_ar }}</td>
-          <td>عدد الأصناف</td>
-          <td class="middle_t"></td>
-
-          <td>{{ user_type }}</td>
-          <td>نوع المستخدم</td>
-        </tr>
-      </table>
-    </div>
+        <div id="order_info"><p>تفاصيل الطلب</p></div>
+        <table class="table table-hover text-right info">
+          <tr>
+            <td>{{ order.created }}</td>
+            <td>تاريخ الطلب</td>
+            <td class="middle_t"></td>
+            <td>{{ order.id | to_ar }}</td>
+            <td>رقم الطلب</td>
+          </tr>
+          <tr>
+            <td>{{ order.city }}</td>
+            <td>البلد</td>
+            <td class="middle_t"></td>
+  
+            <td>{{ order.first_name }} {{ order.last_name }}</td>
+            <td>اسم المستخدم</td>
+          </tr>
+          <tr>
+            <td style="font-family: 'Cairo', sans-serif;">{{ count | to_ar }}</td>
+            <td>عدد الأصناف</td>
+            <td class="middle_t"></td>
+  
+            <td>{{ user_type }}</td>
+            <td>نوع المستخدم</td>
+          </tr>
+          <tr>
+              <td colspan="5">
+                الوصف &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ order.description }}
+              </td>
+            </tr>
+          <tr>
+              <td colspan="5">
+                العنوان &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ order.address }}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" >
+                <div class="aniimated-thumbnials">
+                  {%for url in images%}
+                  <a href="{{ url }}">
+                    <img width="100" height="100" src="{{ url }}" />
+                  </a>
+                  {%endfor%}
+                </div>
+              </td>
+              <td >:  الصور المرفقة مع الطلب</td>
+            </tr>
+        </table>
+      </div>
     <div class="col-md-1"></div>
   </div>
 </div>
@@ -49,36 +71,26 @@
     <div class=" orderItem col-md-10">
       <table class="table text-right info">
         <tr>
-          <td colspan="2" style="width:40%;">
-            الصنف &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ order_item.product }}
-          </td>
-          <td colspan="2" style="width:40%;">
+          <td colspan="2" style="width:30%;">
              الكمية &nbsp;&nbsp;  :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ order_item.quantity|to_ar }} 
           </td>
-        </tr>
-        <tr>
-          <td colspan="5">
-            الوصف &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ order_item.description }}
+          <td colspan="2" style="width:30%;">
+            الصنف &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ order_item.product }}
           </td>
-        </tr>
-        <tr>
-          <td colspan="3" style="width:80%;">
-            <div class="aniimated-thumbnials">
-              {%for url in order_item.images%}
-              <a href="{{ url }}">
-                <img width="100" height="100" src="{{ url }}" />
-              </a>
-              {%endfor%}
-            </div>
-          </td>
-          <td style="width:10%;">: صور السلعة</td>
-        </tr>
-        <tr>
           <td style="font-family: 'Cairo', sans-serif;width:20%;">{{ order_item.price | to_ar }}</td>
           <td style="width:12%;">: &nbsp; السعر الحالي</td>
-          <td  style="width:40%;">
-          </td>
-          <td style="width:10%;"></td>
+        </tr>
+        <tr>
+      {%if order_type == 'old' or order_type == 'done'%}
+          {%if order_item.status == 1%}
+          <td colspan="6" class="text-center" style="background:rgb(9, 82, 9);color:white">تم قبول السعر</td>
+          {%elif order_item.status == 0 %}
+          <td class="text-center" colspan="6" style="background:rgb(136, 12, 12);color:white">تم رفض السعر</td>
+          {%else%}
+          <td colspan="6"></td>
+          {%endif%}
+          {%endif%}
+
         </tr>
       </table>
     </div>
@@ -88,15 +100,14 @@
   <div class="row justify-content-center">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      {%if order_type == 'waiting'%}
         <form method="POST" action="{% url 'admin:change_price' order.id%}">
             {% csrf_token %}
-            <button class="btn btn-danger btn-block" style="font-size:19px;">تعديل الأسعار</button>
+            <button class="btn btn-warning btn-block" style="font-size:19px;color:black">تعديل الأسعار</button>
           </form>
-      {%elif order_type == 'old'%}
+      {%if order_type == 'old'%}
         <form method="POST" action="{% url 'admin:mark_done' order.id%}">
             {% csrf_token %}
-            <button class="btn btn-danger btn-block" style="font-size:19px;">إنهاء الطلب</button>
+            <button class="btn btn-danger btn-block" style="font-size:19px;margin-top:20px;color:black">إنهاء الطلب</button>
           </form>
           {%endif%}
     </div>

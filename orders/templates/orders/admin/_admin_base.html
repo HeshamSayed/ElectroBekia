@@ -48,9 +48,7 @@
         </ul>
         <ul class="nav navbar-nav ">
             {% if request.user.is_authenticated %}
-            {% if site_url %}
-            <li><a href="{{ site_url }}">مشاهدة الموقع</a> </li>
-        {% endif %}
+            <li><a href="/">مشاهدة الموقع</a> </li>
             {% if user.has_usable_password %}
             <li><a href="{% url 'admin:password_change' %}">تغيير كلمة السر</a> </li>
             {% endif %}

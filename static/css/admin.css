@@ -1,7 +1,7 @@
 .outer {
 }
 body{
-  background: #dbfddb;
+  background: #fcfffc;
 }
 .inner {
   margin: auto; /* or 0 if you want to maintain its position in the upper-left corner */

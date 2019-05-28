@@ -812,3 +812,36 @@ body {
 }
 
 /* end my cart*/
+
+.info{
+  font-size: 19px;
+}
+.btn:hover{
+  color: black !important;
+}
+.see{
+  width: 80%;
+  font-size: 23px;
+  color: rgb(0, 54, 21);
+}
+
+
+#orderHeader{
+  padding : 1%;
+  background: #f7fff8;
+  border-radius: 25px;
+  color: #00411f
+}
+#order_info{
+  font-size:24px;
+  font-weight: 700;
+  color: #007e3d
+
+}
+
+.orderItem{
+  margin: 2% 0;
+  padding-top: 1%;
+  background-color: #e9ffe9;
+  border-radius: 25px;
+}
