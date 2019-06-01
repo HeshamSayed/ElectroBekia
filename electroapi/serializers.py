@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from products.models import Category, Product
-from orders.models import Order, OrderItem
+from orders.models import Order, OrderItem , OrderImage
 from accounts.models import User
 
 
@@ -39,4 +39,9 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = ("id", "order","product","price","quantity","status")
+
+class OrderImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderImage
+        fields = ("id", "order", "img")
 

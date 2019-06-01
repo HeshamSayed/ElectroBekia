@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ListCategoryView, CategoryDetailView, ListProductView, ProductDetailView,\
-    ListOrderView, OrderDetailView, LoginView, RegisterUserView, ListOrderItemView, OrderItemDetailView
+    ListOrderView, OrderDetailView, LoginView, RegisterUserView, ListOrderItemView, OrderItemDetailView, ListOrderImageView, OrderImageDetailView
 app_name = 'electroapi'
 
 urlpatterns = [
@@ -33,6 +33,12 @@ urlpatterns = [
 
     # /api/orders/id/items/id delete,update,get item
     path('orders/<int:pk>/items/<int:id>/',OrderItemDetailView.as_view(), name="order_details"),
+
+    # /api/orders/id/images get, post images on order
+    path('orders/<int:pk>/images/', ListOrderImageView.as_view(), name="images"),
+
+    # /api/orders/id/images/id delete, get image on order
+    path('orders/<int:pk>/images/<int:id>/', OrderImageDetailView.as_view(), name="image_details"),
 
 
 
