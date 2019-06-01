@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from products.models import Category, Product
-from orders.models import Order
+from orders.models import Order, OrderItem
 from accounts.models import User
 
 
@@ -33,4 +33,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("email","first_name","last_name","user_category","phone","city","date_of_birth")
+
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = ("id", "order","product","price","quantity","status")
 
