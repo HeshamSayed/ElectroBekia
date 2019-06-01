@@ -11,9 +11,9 @@ class ListOrderImageView(generics.ListAPIView):
     """
     /api/orders/2/images/
     """
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin)
     queryset = OrderImage.objects.all()
     serializer_class = OrderImageSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         try:
@@ -46,9 +46,9 @@ class OrderImageDetailView(generics.RetrieveUpdateDestroyAPIView):
     DELETE orders/:fk/image/:id/
     Get orders/:fk/image/:id/
     """
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin)
     queryset = OrderImage.objects.all()
     serializer_class = OrderImageSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         try:

@@ -4,6 +4,7 @@ from accounts.models import User, City
 from .serializers import OrderSerializer
 from rest_framework.response import Response
 from rest_framework.views import status
+from rest_framework import permissions
 
 
 class ListOrderView(generics.ListAPIView):
@@ -12,6 +13,7 @@ class ListOrderView(generics.ListAPIView):
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def post(self, request, *args, **kwargs):
         user = User.objects.get(pk=request.data["user"])
@@ -43,6 +45,7 @@ class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         try:

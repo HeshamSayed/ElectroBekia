@@ -3,9 +3,8 @@ from orders.models import Order,OrderItem
 from .serializers import OrderItemSerializer
 from rest_framework.response import Response
 from rest_framework.views import status
-from .CustomPermission import IsGetOrIsAdmin
 from rest_framework import permissions
-from products.models import Product, Category
+from products.models import Product
 
 
 
@@ -13,9 +12,9 @@ class ListOrderItemView(generics.ListAPIView):
     """
     /api/orders/2/items/
     """
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin)
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         try:
@@ -55,9 +54,9 @@ class OrderItemDetailView(generics.RetrieveUpdateDestroyAPIView):
     PUT orders/:fk/items/:id/
     DELETE orders/:fk/items/:id/
     """
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsGetOrIsAdmin)
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         try:
