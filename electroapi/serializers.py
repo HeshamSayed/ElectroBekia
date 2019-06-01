@@ -19,7 +19,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ("id", "first_name", "last_name", "email", "phone", "address",
-                  "city", "user", "created", "updated", "order_status", "get_total_cost")
+                  "city", "user", "created", "updated", "order_status", "description")
 
 
 class TokenSerializer(serializers.Serializer):

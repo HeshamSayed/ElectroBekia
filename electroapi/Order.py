@@ -24,7 +24,8 @@ class ListOrderView(generics.ListAPIView):
             address=request.data["address"],
             order_status=request.data["order_status"],
             user=user,
-            city=city
+            city=city,
+            description=request.data["description"]
         )
 
         return Response(
@@ -68,8 +69,10 @@ class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
             a_order.phone = request.data["phone"]
             a_order.address = request.data["address"]
             a_order.order_status = request.data["order_status"]
+            a_order.description = request.data["description"]
             a_order.user = a_user
             a_order.city = a_city
+
             a_order.save()
             return Response(OrderSerializer(a_order).data)
 
