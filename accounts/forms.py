@@ -11,6 +11,9 @@ from .models import City
 
 
 class SignupForm(UserCreationForm):
+  # error_messages = {
+  # 'This password is too short. It must contain at least 8 characters.': "كلمه السر قصير يجب هلا تقل عن 8 احرف"
+  # }
   first_name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={
     'class': "form-control input-lg text-right",
     'placeholder': "الاسم الاول",
@@ -38,7 +41,8 @@ class SignupForm(UserCreationForm):
       'class': "form-control input-lg text-right",
       'autocomplete': 'off',
     }),
-    help_text=_('من فضلك ادخل رقم موبايل صحيح')
+    help_text=_('من فضلك ادخل رقم موبايل صحيح'),
+    
   )
 
   date_of_birth = forms.DateField(
@@ -53,7 +57,8 @@ class SignupForm(UserCreationForm):
     'class': "form-control input-lg text-right",
     'autocomplete': 'off',
   }), help_text='الرقم السري يجب ان يكون على الاقل 8 حروف'
-                ' من فضلك ادخل ارقام وحروف وعلامات مميزه')
+                ' من فضلك ادخل ارقام وحروف وعلامات مميزه',
+       )
 
   password2 = forms.CharField(widget=forms.PasswordInput(attrs={
     'placeholder': "تاكيد الرقم السرى",
@@ -82,10 +87,14 @@ class SignupForm(UserCreationForm):
     (1, 'مستخدم منزلى'),
     (0, 'مركز صيانه'),
   ]
+  # boolfield = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Some Label", 
+  #                               initial='', widget=forms.Select(), required=True)
 
-  user_category = forms.BooleanField(
+  user_category = forms.ChoiceField(
     required=True,
-    widget=forms.Select(choices=USER_CATEGORIES, attrs={
+    choices = USER_CATEGORIES,
+    initial='نوع المستخدم',
+    widget=forms.Select(attrs={
       'class': "form-control input-lg text-right",
       'autocomplete': 'off',
       'id': "sel1",

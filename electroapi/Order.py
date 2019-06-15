@@ -4,6 +4,7 @@ from accounts.models import User, City
 from .serializers import OrderSerializer
 from rest_framework.response import Response
 from rest_framework.views import status
+from rest_framework import permissions
 
 
 class ListOrderView(generics.ListAPIView):
@@ -12,6 +13,7 @@ class ListOrderView(generics.ListAPIView):
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def post(self, request, *args, **kwargs):
         user = User.objects.get(pk=request.data["user"])
@@ -24,7 +26,8 @@ class ListOrderView(generics.ListAPIView):
             address=request.data["address"],
             order_status=request.data["order_status"],
             user=user,
-            city=city
+            city=city,
+            description=request.data["description"]
         )
 
         return Response(
@@ -42,6 +45,7 @@ class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         try:
@@ -68,8 +72,10 @@ class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
             a_order.phone = request.data["phone"]
             a_order.address = request.data["address"]
             a_order.order_status = request.data["order_status"]
+            a_order.description = request.data["description"]
             a_order.user = a_user
             a_order.city = a_city
+
             a_order.save()
             return Response(OrderSerializer(a_order).data)
 

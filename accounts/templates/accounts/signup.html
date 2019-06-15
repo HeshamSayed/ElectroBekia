@@ -42,7 +42,7 @@
                             {% endfor %}
                           </div>
                         </div>
-                        <div class="col-lg-4" style="padding-left: 0">
+                        <div class="col-lg-5" style="padding-left: 0">
                           <div class="form-group">
                             <label class="form-control input-lg text-right"
                                    style="font-weight: normal;padding: 10px;"
@@ -50,15 +50,17 @@
                           </div>
                         </div>
                       {% else %}
-                        <div class="col-lg-10">
+                        <div class="col-lg-11">
                           <div class="form-group">
                             {{ field }}
                             {% if field.help_text %}
                               <small style="color: grey;">{{ field.help_text }}</small>
                             {% endif %}
-                            {% for error in field.errors %}
-                              <p style="color: red">{{ error }}</p>
-                            {% endfor %}
+                            {% if field.errors and field.name == 'password1' or field.name == 'password2' %}
+                            <p style="color: red">كلمه السر قصير ﻻ يجب ان تقل عن 8 احرف</p>
+                            <p style="color: red">كلمه السر ﻻ يجب ان تكون ارقام فقط</p>
+                            <p style="color: red">كلمه السر فى حقل الرقم السرى يجب ان تساوى كلمه السر فى حقل تاكيد الرقم السري</p>
+                            {% endif %}
                           </div>
                         </div>
                       {% endif %}
