@@ -16,12 +16,12 @@ class SignupForm(UserCreationForm):
   # }
   first_name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={
     'class': "form-control input-lg text-right",
-    'placeholder': "الاسم الاول",
+    'placeholder': "الاسم الأول",
     'autocomplete': 'off',
   }))
   last_name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={
     'class': "form-control input-lg text-right",
-    'placeholder': "الاسم الاخير",
+    'placeholder': "الاسم الأخير",
     'autocomplete': 'off',
   }))
   email = forms.EmailField(max_length=100, help_text='مطلوب', required=True, widget=forms.EmailInput(attrs={
@@ -41,7 +41,7 @@ class SignupForm(UserCreationForm):
       'class': "form-control input-lg text-right",
       'autocomplete': 'off',
     }),
-    help_text=_('من فضلك ادخل رقم موبايل صحيح'),
+    help_text=_('من فضلك ادخل رقم هاتف صحيح'),
     
   )
 
@@ -56,15 +56,14 @@ class SignupForm(UserCreationForm):
     'placeholder': "الرقم السرى",
     'class': "form-control input-lg text-right",
     'autocomplete': 'off',
-  }), help_text='الرقم السري يجب ان يكون على الاقل 8 حروف'
-                ' من فضلك ادخل ارقام وحروف وعلامات مميزه',
+  }), help_text='الرقم السري يجب ان يكون على الأقل 8 حروف'
        )
 
   password2 = forms.CharField(widget=forms.PasswordInput(attrs={
     'placeholder': "تاكيد الرقم السرى",
     'class': "form-control input-lg text-right",
     'autocomplete': 'off',
-  }), help_text='ادخل الرقم السري مره اخرى للتاكيد')
+  }), help_text='ادخل الرقم السري مرة أخرى للتاكيد')
 
   date_of_birth = forms.DateField(
     required=True, label='تاريخ الميلاد', widget=forms.DateInput(attrs={

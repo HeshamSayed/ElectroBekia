@@ -73,9 +73,7 @@ class CityAdmin(admin.ModelAdmin):
         css = {
             'all': ('css/admin/style.css',)
         }
-        js = {
-            'all': ('js/admin/script.js',)
-        }
+        js = ('js/admin/script.js',)
 
 
 class PhoneAdmin(admin.ModelAdmin):

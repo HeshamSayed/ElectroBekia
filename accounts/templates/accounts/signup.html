@@ -56,10 +56,12 @@
                             {% if field.help_text %}
                               <small style="color: grey;">{{ field.help_text }}</small>
                             {% endif %}
-                            {% if field.errors and field.name == 'password1' or field.name == 'password2' %}
+                            {% if field.errors %}
+                            {% if field.name == 'password1' or field.name == 'password2' %}
                             <p style="color: red">كلمه السر قصير ﻻ يجب ان تقل عن 8 احرف</p>
                             <p style="color: red">كلمه السر ﻻ يجب ان تكون ارقام فقط</p>
                             <p style="color: red">كلمه السر فى حقل الرقم السرى يجب ان تساوى كلمه السر فى حقل تاكيد الرقم السري</p>
+                            {% endif %}
                             {% endif %}
                           </div>
                         </div>
