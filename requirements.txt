@@ -1,7 +1,7 @@
 certifi==2019.3.9
 chardet==3.0.4
 defusedxml==0.6.0
-Django==2.2.1
+Django==2.2.21
 -e git://github.com/jsocol/django-adminplus@5520e8417f195352d80db86c9020d58e8407d585#egg=django_adminplus
 djangorestframework==3.9.4
 djangorestframework-jwt==1.11.0
